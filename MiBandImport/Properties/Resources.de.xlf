@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="de" original="Resources.resx" tool-id="MultilingualAppToolkit" product-name="MiBandImport" product-version="0.1.0.0" build-num="0">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="3.1.1250.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="Resx">
+        <trans-unit id="Resx/Ablaufzeit" translate="yes" xml:space="preserve">
+          <source>Expiration time</source>
+          <target state="signed-off">Ablaufzeit</target></trans-unit>
+        <trans-unit id="Resx/ZielSchritte" translate="yes" xml:space="preserve">
+          <source>Goal steps</source>
+          <target state="signed-off">Ziel Schritte</target></trans-unit>
+        <trans-unit id="Resx/Wach" translate="yes" xml:space="preserve">
+          <source>wake</source>
+          <target state="signed-off">wach</target></trans-unit>
+        <trans-unit id="Resx/Typ" translate="yes" xml:space="preserve">
+          <source>Type</source>
+          <target state="signed-off">Typ</target></trans-unit>
+        <trans-unit id="Resx/Tiefschlaf" translate="yes" xml:space="preserve">
+          <source>Deep sleep</source>
+          <target state="signed-off">Tiefschlaf</target></trans-unit>
+        <trans-unit id="Resx/Taetigkeit" translate="yes" xml:space="preserve">
+          <source>Activity</source>
+          <target state="signed-off">Tätigkeit</target></trans-unit>
+        <trans-unit id="Resx/Start" translate="yes" xml:space="preserve">
+          <source>Start</source>
+          <target state="signed-off">Start</target>
+        </trans-unit>
+        <trans-unit id="Resx/ScriptVersion" translate="yes" xml:space="preserve">
+          <source>Script Version</source>
+          <target state="signed-off">Script Version</target>
+        </trans-unit>
+        <trans-unit id="Resx/Schritte" translate="yes" xml:space="preserve">
+          <source>Steps</source>
+          <target state="signed-off">Schritte</target></trans-unit>
+        <trans-unit id="Resx/Schlafdauer" translate="yes" xml:space="preserve">
+          <source>Sleep duration</source>
+          <target state="signed-off">Schlafdauer</target></trans-unit>
+        <trans-unit id="Resx/Minuten" translate="yes" xml:space="preserve">
+          <source>Minutes</source>
+          <target state="signed-off">Minuten</target></trans-unit>
+        <trans-unit id="Resx/LuaScript" translate="yes" xml:space="preserve">
+          <source>LUA Script</source>
+          <target state="signed-off">LUA Script</target>
+        </trans-unit>
+        <trans-unit id="Resx/LeichtenSchlaf" translate="yes" xml:space="preserve">
+          <source>light sleeping</source>
+          <target state="signed-off">leichten Schlaf</target></trans-unit>
+        <trans-unit id="Resx/Laufzeit" translate="yes" xml:space="preserve">
+          <source>Run-time</source>
+          <target state="signed-off">Laufzeit</target></trans-unit>
+        <trans-unit id="Resx/LaufenKalorien" translate="yes" xml:space="preserve">
+          <source>Running calories</source>
+          <target state="signed-off">Laufen Kalorien</target></trans-unit>
+        <trans-unit id="Resx/LaufenEntfernung" translate="yes" xml:space="preserve">
+          <source>Run distance</source>
+          <target state="signed-off">Laufen Entfernung</target></trans-unit>
+        <trans-unit id="Resx/Kalorien" translate="yes" xml:space="preserve">
+          <source>Calories</source>
+          <target state="signed-off">Kalorien</target></trans-unit>
+        <trans-unit id="Resx/JsonString" translate="yes" xml:space="preserve">
+          <source>Json String</source>
+          <target state="signed-off">Json String</target>
+        </trans-unit>
+        <trans-unit id="Resx/Info" translate="yes" xml:space="preserve">
+          <source>Info</source>
+          <target state="signed-off">Info</target>
+        </trans-unit>
+        <trans-unit id="Resx/Index" translate="yes" xml:space="preserve">
+          <source>Index</source>
+          <target state="signed-off">Index</target>
+        </trans-unit>
+        <trans-unit id="Resx/ID" translate="yes" xml:space="preserve">
+          <source>ID</source>
+          <target state="signed-off">ID</target>
+        </trans-unit>
+        <trans-unit id="Resx/GehenZeit" translate="yes" xml:space="preserve">
+          <source>Walk time</source>
+          <target state="signed-off">Gehen Zeit</target></trans-unit>
+        <trans-unit id="Resx/FehlerMsg" translate="yes" xml:space="preserve">
+          <source>The following error appeared</source>
+          <target state="signed-off">Es trat folgender Fehler auf</target></trans-unit>
+        <trans-unit id="Resx/FehlerPhoneNotAvabile" translate="yes" xml:space="preserve">
+          <source>Can not connect to phone.</source>
+          <target state="signed-off">Keine Verbindung zum Smartphone möglich.</target>
+        </trans-unit>
+        <trans-unit id="Resx/FehlerWorkDirPhone" translate="yes" xml:space="preserve">
+          <source>Workdirk on phone not found. Last read data will be viewed.</source>
+          <target state="signed-off">Arbeitsverzeichnis auf Smartphone nicht gefunden. Zuletzt geleseme Daten werden angezeigt.</target>
+        </trans-unit>
+        <trans-unit id="Resx/ErgebnisAktion" translate="yes" xml:space="preserve">
+          <source>Result of the action</source>
+          <target state="signed-off">Ergebnis der Aktion</target></trans-unit>
+        <trans-unit id="Resx/Entfernung" translate="yes" xml:space="preserve">
+          <source>Distance</source>
+          <target state="signed-off">Entfernung</target></trans-unit>
+        <trans-unit id="Resx/Ende" translate="yes" xml:space="preserve">
+          <source>End</source>
+          <target state="signed-off">Ende</target></trans-unit>
+        <trans-unit id="Resx/Einschlafzeit" translate="yes" xml:space="preserve">
+          <source>Sleep time</source>
+          <target state="signed-off">Einschlafzeit</target></trans-unit>
+        <trans-unit id="Resx/DatumUhrzeit" translate="yes" xml:space="preserve">
+          <source>Date / time</source>
+          <target state="signed-off">Datum / Uhrzeit</target></trans-unit>
+        <trans-unit id="Resx/Datum" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <target state="signed-off">Datum</target></trans-unit>
+        <trans-unit id="Resx/Berechtigung" translate="yes" xml:space="preserve">
+          <source>Permission</source>
+          <target state="signed-off">Berechtigung</target></trans-unit>
+        <trans-unit id="Resx/BackupBestätigen" translate="yes" xml:space="preserve">
+          <source>Confirm backup on your Smartphone</source>
+          <target state="signed-off">Backup auf dem Smartphone bestätigen</target></trans-unit>
+        <trans-unit id="Resx/Aufwachzeit" translate="yes" xml:space="preserve">
+          <source>Wake-up time</source>
+          <target state="signed-off">Aufwachzeit</target></trans-unit>
+        <trans-unit id="Resx/AktionErforderlich" translate="yes" xml:space="preserve">
+          <source>Action required</source>
+          <target state="signed-off">Aktion erforderlich</target></trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="de" original="Form1.resx" tool-id="MultilingualAppToolkit" product-name="MiBandImport" product-version="0.1.0.0" build-num="0">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="3.1.1250.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="Resx">
+        <trans-unit id="Resx/textBoxWorkDirPhone.Text" translate="no" xml:space="preserve">
+          <source>/storage/sdcard1/Backup/MiBand/</source>
+          <target state="signed-off">/storage/sdcard1/Backup/MiBand/</target>
+        </trans-unit>
+        <trans-unit id="Resx/labelWorkDirPhone.Text" translate="yes" xml:space="preserve">
+          <source>Workdir on Phone</source>
+          <target state="signed-off">Arb.-Verzeichnis </target>
+        </trans-unit>
+        <trans-unit id="Resx/buttonRead.Text" translate="yes" xml:space="preserve">
+		  <source>Refresh data</source>
+		  <target state="signed-off">Daten neu lesen</target></trans-unit>
+        <trans-unit id="Resx/labelShowTo.Text" translate="yes" xml:space="preserve">
+		  <source>Display until</source>
+		  <target state="signed-off">Anzeige bis</target></trans-unit>
+        <trans-unit id="Resx/labelShowFrom.Text" translate="yes" xml:space="preserve">
+		  <source>Display from</source>
+		  <target state="signed-off">Anzeige von</target></trans-unit>
+        <trans-unit id="Resx/radioButtonRoot.Text" translate="yes" xml:space="preserve">
+		  <source>with root access</source>
+		  <target state="signed-off">mit Root-Zugriff</target></trans-unit>
+        <trans-unit id="Resx/radioButtonNoRoot.Text" translate="yes" xml:space="preserve">
+		  <source>without root</source>
+		  <target state="signed-off">ohne Root</target></trans-unit>
+        <trans-unit id="Resx/maskedTextBoxSleepDur.Mask" translate="no" xml:space="preserve">
+		  <source>00:00</source>
+		  <target state="signed-off">00:00</target>
+		</trans-unit>
+        <trans-unit id="Resx/maskedTextBoxSleepDur.Text" translate="no" xml:space="preserve">
+		  <source>0600</source>
+		  <target state="signed-off">0600</target>
+		</trans-unit>
+        <trans-unit id="Resx/label1.Text" translate="yes" xml:space="preserve">
+		  <source>should sleep duration</source>
+		  <target state="signed-off">soll Schlafdauer</target></trans-unit>
+        <trans-unit id="Resx/buttonShowOldData.Text" translate="yes" xml:space="preserve">
+		  <source>View last data</source>
+		  <target state="signed-off">letzte Daten anzeigen</target></trans-unit>
+        <trans-unit id="Resx/tabPageOriginTab.Text" translate="yes" xml:space="preserve">
+		  <source>Table</source>
+		  <target state="signed-off">Tabelle</target></trans-unit>
+        <trans-unit id="Resx/tabPageOriginGraphSteps.Text" translate="yes" xml:space="preserve">
+		  <source>Graphic steps</source>
+		  <target state="signed-off">Grafik Schritte</target></trans-unit>
+        <trans-unit id="Resx/tabPageOriginGraphSleep.Text" translate="yes" xml:space="preserve">
+		  <source>Graphic sleep</source>
+		  <target state="signed-off">Grafik Schlaf</target></trans-unit>
+        <trans-unit id="Resx/tabPageOrigin.Text" translate="yes" xml:space="preserve">
+		  <source>History</source>
+		  <target state="signed-off">Verlauf</target></trans-unit>
+        <trans-unit id="Resx/tabPageUserData.Text" translate="yes" xml:space="preserve">
+		  <source>UserData</source>
+		  <target state="signed-off">UserData</target>
+		</trans-unit>
+        <trans-unit id="Resx/$this.Text" translate="no" xml:space="preserve">
+		  <source>MiBandView</source>
+		  <target state="signed-off">MiBandView</target></trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
