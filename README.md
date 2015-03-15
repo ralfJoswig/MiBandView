@@ -1,11 +1,17 @@
 # MiBandView
-<p>Windows .Net program to fetch and visualize data from Xiaomi Mi band.</p>
-This tool for Xiaomi Mi band provides following functionality:
+<p>Windows .Net program to fetch and visualize data from Xiaomi Mi band.<br>
+Requirements:
+<ol>
+  <li>Xiaomi Mi band</li>
+  <li>Android Smartphone with installed MiFit-App</li>
+  <li>Computer with Windows and .Net 4.5</li>
+</ol>
+</p>
+<p>This tool for Xiaomi Mi band provides following functionality:
 <ol>
   <li>Exports data from Xiaomi Mi band on both rooted and non-rooted Android phones.</li>
   <li>Display the information from the band an your computer</li>
 </ol>
-<p>
 How to use:
 <ol>
   <li>Make sure you have USB drivers for your device properly installed and that your device is accessible by ADB when you connect it through USB</li>
