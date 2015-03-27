@@ -25,6 +25,8 @@ namespace MiBandImport.DataPanels
     internal class PanelGeneralTab : MiBandDataPanel.MiBandPanel
     {
         private DataGridView dataGridView;
+        private SortOrder sortDirectionDate = SortOrder.None;
+        private DateTime initDateTime = new DateTime(0);
 
         /// <summary>
         /// Zeigt die Daten an
@@ -44,6 +46,25 @@ namespace MiBandImport.DataPanels
                 if (miData.date >= showFrom &&
                     miData.date <= showTo)
                 {
+                    // wenn kein Schalfstart,-ende oder -dauer gesetzt ist auch keine anzeigen
+                    string sleepStartTime = string.Empty;
+                    if (miData.sleepStartTime.CompareTo(initDateTime) != 0) 
+                    {
+                        sleepStartTime = miData.sleepStartTime.ToShortTimeString();
+                    }
+
+                    string sleepEndTime = string.Empty;
+                    if (miData.sleepEndTime.CompareTo(initDateTime) != 0)
+                    {
+                        sleepEndTime = miData.sleepEndTime.ToShortTimeString();
+                    }
+
+                    string sleepDuration = string.Empty;
+                    if (miData.sleepEndTime.CompareTo(initDateTime) != 0)
+                    {
+                        sleepDuration = miData.sleepDuration.ToString();
+                    }
+
                     // Zeile hinzufügen
                     dataGridView.Rows.Add(new Object[] {miData.date.ToShortDateString(),
                                                         miData.lightSleepMin,
@@ -57,9 +78,9 @@ namespace MiBandImport.DataPanels
                                                         miData.dailyDistanceMeter,
                                                         miData.dailyBurnCalories,
                                                         miData.dailyGoal,
-                                                        miData.sleepStartTime,
-                                                        miData.sleepEndTime,
-                                                        miData.sleepDuration,
+                                                        sleepStartTime,
+                                                        sleepEndTime,
+                                                        sleepDuration,
                                                         miData.sleepStart,
                                                         miData.sleepEnd});
                 }
@@ -119,30 +140,32 @@ namespace MiBandImport.DataPanels
                 column.DataPropertyName != "date")
             {
                 // nein, dann die Standartsortiermethode verwenden
+                dataGridView.Columns[0].HeaderCell.SortGlyphDirection = SortOrder.None;
+                sortDirectionDate = SortOrder.None;
                 return;
             }
 
             // Sortierrichtung bestimmen
             ListSortDirection direction;
-            if (column.HeaderCell.SortGlyphDirection == SortOrder.None ||
-                column.HeaderCell.SortGlyphDirection == SortOrder.Descending)
+            if (sortDirectionDate == SortOrder.None ||
+                sortDirectionDate == SortOrder.Descending)
             {
                 // keine oder absteigend sortiert, dann jetzt aufsteigend
                 direction = ListSortDirection.Ascending;
+                sortDirectionDate = SortOrder.Ascending;
             }
             else
             {
                 // bisher aufsteigend sortiert, dann jetzt absteigen
                 direction = ListSortDirection.Descending;
+                sortDirectionDate = SortOrder.Descending;
             }
 
             // Grid sortieren
             dataGridView.Sort(new dateComparer(direction));
 
             // Kennzeichen für Sortierrichtung setzen
-            column.HeaderCell.SortGlyphDirection = direction == ListSortDirection.Ascending ?
-                                                                SortOrder.Ascending : 
-                                                                SortOrder.Descending;
+            column.HeaderCell.SortGlyphDirection = sortDirectionDate;
         }
 
         /// <summary>
@@ -155,8 +178,6 @@ namespace MiBandImport.DataPanels
             {
                 // Spaltenbreite auf Optimum setzen
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-                //col.SortMode = DataGridViewColumnSortMode.Automatic;
 
                 // die Überschrift und ggf. die Sichtbarkeit der Spalten setzen
                 switch (col.DataPropertyName)
@@ -249,17 +270,25 @@ namespace MiBandImport.DataPanels
                     // nein, dann rot
                     row.Cells[8].Style.BackColor = Color.Red;
                 }
-
+                
                 // genug geschlafen?
-                if ((TimeSpan)row.Cells[14].Value < sleepDuration)
+                if ((string)row.Cells[14].Value == string.Empty)
                 {
-                    // nein
-                    row.Cells[14].Style.BackColor = Color.Red;
+                    row.Cells[14].Style.BackColor = Color.White;
                 }
                 else
                 {
-                    // ja
-                    row.Cells[14].Style.BackColor = Color.LightGreen;
+                    TimeSpan test = TimeSpan.Parse((string)row.Cells[14].Value);
+                    if (test < sleepDuration)
+                    {
+                        // nein
+                        row.Cells[14].Style.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        // ja
+                        row.Cells[14].Style.BackColor = Color.LightGreen;
+                    }
                 }
             }
         }
