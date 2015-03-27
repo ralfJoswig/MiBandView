@@ -213,4 +213,10 @@
   <data name="AktionErforderlich" xml:space="preserve">
     <value>Action required</value>
   </data>
+  <data name="FehlerPhoneNotAvabile" xml:space="preserve">
+    <value>Can not connect to phone.</value>
+  </data>
+  <data name="FehlerWorkDirPhone" xml:space="preserve">
+    <value>Workdirk on phone not found. Last read data will be viewed.</value>
+  </data>
 </root>

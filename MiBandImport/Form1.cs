@@ -73,52 +73,72 @@ namespace MiBandImport
             
         }
 
+        /// <summary>
+        /// Initialisiert die einzelnen Tabs
+        /// </summary>
         private void initDataPanles()
         {
+            // Erfasste Schlafzeit in eine Zeitspanne umsetzen
             var timeSpanSleep = new TimeSpan(Convert.ToInt16(maskedTextBoxSleepDur.Text.Substring(0, 2)),
                                              Convert.ToInt16(maskedTextBoxSleepDur.Text.Substring(3, 2)),
                                              0);
 
+            // Tab mit den Details erzeugen wenn noch nicht geschehen
             if (panelDetail1 == null)
             {
                 panelDetail1 = new PanelDetail1();
                 tabPageUserData.Controls.Add(panelDetail1);
                 panelDetail1.Dock = DockStyle.Fill;
 
+                // Daten sollen aktualisiert werden wenn der angezeigte Zeitraum verändert wurde
                 showSpanChanged += new eventShowSpanChanged(panelDetail1.changeShowFromTo);
             }
+
+            // Panel hinzufügen
             panelDetail1.setData(PanelDetail1.DataType.Detail, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
 
+            //Tab mit den allg. Daten erzeugen wenn noch nicht geschehen
             if (panelGeneralTab == null)
             {
                 panelGeneralTab = new PanelGeneralTab();
                 tabPageOriginTab.Controls.Add(panelGeneralTab);
                 panelGeneralTab.Dock = DockStyle.Fill;
 
+                // Daten sollen aktualisiert werden wenn Schlafdauer oder Zeitraum geändert wurde
                 sleepDurationChanged += new eventSleepDurationChanged(panelGeneralTab.changeSleepTime);
                 showSpanChanged += new eventShowSpanChanged(panelGeneralTab.changeShowFromTo);
             }
+
+            // Panel hinzufügen
             panelGeneralTab.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
 
+            // Tab mit der Grafik für die Schritte erzeugen wenn noch nicht geschehen
             if (panelGeneralGraphSteps == null)
             {
                 panelGeneralGraphSteps = new PanelGeneralGraphSteps();
                 tabPageOriginGraphSteps.Controls.Add(panelGeneralGraphSteps);
                 panelGeneralGraphSteps.Dock = DockStyle.Fill;
 
+                // Daten sollen aktualisiert werden wenn der Zeitraum geändert wurde
                 showSpanChanged += new eventShowSpanChanged(panelGeneralGraphSteps.changeShowFromTo);
             }
+
+            // Panel hinzufügen
             panelGeneralGraphSteps.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
 
+            // Tab mit der Grafik mit der Schalfdauer
             if (panelGeneralGraphSleep == null)
             {
                 panelGeneralGraphSleep = new PanelGeneralGraphSleep();
                 tabPageOriginGraphSleep.Controls.Add(panelGeneralGraphSleep);
                 panelGeneralGraphSleep.Dock = DockStyle.Fill;
 
+                // Daten sollen aktualisiert werden wenn Schlafdauer oder Zeitraum verändert wurde
                 sleepDurationChanged += new eventSleepDurationChanged(panelGeneralGraphSleep.changeSleepTime);
                 showSpanChanged += new eventShowSpanChanged(panelGeneralGraphSleep.changeShowFromTo);
             }
+
+            // Panel hinzufügen
             panelGeneralGraphSleep.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
         }
 
@@ -350,11 +370,19 @@ namespace MiBandImport
             return true;
         }
 
+        /// <summary>
+        /// Prüft ob das Smartphone erreichbar ist
+        /// </summary>
+        /// <returns></returns>
         private bool phoneIsAvabile()
         {
             return adbCommand("shell \"su -c 'ls'\"", Properties.Settings.Default.PhoneTimeOut);
         }
 
+        /// <summary>
+        /// Überprüft ob das Arbeitsverzeichnis auf dem Smartphone vorhanden ist
+        /// </summary>
+        /// <returns></returns>
         private bool checkWorkDirPhone()
         {
             return true;
@@ -449,21 +477,35 @@ namespace MiBandImport
             log.Info("Anwendung wird beendet");
         }
 
+        /// <summary>
+        /// Text in Feld für die Schlafdauer wurde geändert
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void maskedTextBoxSleepDur_TextChanged(object sender, EventArgs e)
         {
+            // wenn die Eingabe das passende Format hat
             if (sleepDurationChanged != null &&
                 maskedTextBoxSleepDur.Text.Length == 5)
             {
+                // Eingabe in eine Zeitspanne umwandeln
                 var timeSpanSleep = new TimeSpan(Convert.ToInt16(maskedTextBoxSleepDur.Text.Substring(0, 2)),
                                                  Convert.ToInt16(maskedTextBoxSleepDur.Text.Substring(3, 2)),
                                                  0);
+
+                // und die geänderte Schlafdauer an alle mitteilen die es wissen wollen
                 sleepDurationChanged(this, timeSpanSleep);
             }
-
         }
 
+        /// <summary>
+        /// Zeitpunkt ab dem die Daten angezeigt werden soll wurde geändert
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dateTimePickerShowFrom_ValueChanged(object sender, EventArgs e)
         {
+            // Aktuellen Wert an alle verteilen die es wissen wollen
             showSpanChanged(this, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
         }
     }

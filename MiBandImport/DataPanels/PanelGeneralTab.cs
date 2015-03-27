@@ -11,6 +11,7 @@
  * if not, see <http://www.gnu.org/licenses/>
  */
 
+using MiBandDataPanel;
 using MiBandImport.data;
 using System;
 using System.Collections.Generic;
@@ -36,9 +37,6 @@ namespace MiBandImport.DataPanels
                 return;
             }
 
-            // neue Datenquelle für die Anzeige
-            List<MiBandData> dataShow = new List<MiBandData>();
-
             // Daten für die Filterung der Anzeige prüfen
             foreach (MiBandData miData in data.data)
             {
@@ -46,13 +44,26 @@ namespace MiBandImport.DataPanels
                 if (miData.date >= showFrom &&
                     miData.date <= showTo)
                 {
-                    // ja, dann für Anzeige übernehmen
-                    dataShow.Add(miData);
+                    // Zeile hinzufügen
+                    dataGridView.Rows.Add(new Object[] {miData.date.ToShortDateString(),
+                                                        miData.lightSleepMin,
+                                                        miData.deepSleepMin,
+                                                        miData.awakeMin,
+                                                        miData.runTimeMin,
+                                                        miData.runDistanceMeter,
+                                                        miData.runBurnCalories,
+                                                        miData.walkTimeMin,
+                                                        miData.dailySteps,
+                                                        miData.dailyDistanceMeter,
+                                                        miData.dailyBurnCalories,
+                                                        miData.dailyGoal,
+                                                        miData.sleepStartTime,
+                                                        miData.sleepEndTime,
+                                                        miData.sleepDuration,
+                                                        miData.sleepStart,
+                                                        miData.sleepEnd});
                 }
             }
-
-            // Daten in Grid einfügen
-            dataGridView.DataSource = dataShow;
 
             // Grid für die modifizieren
             modifyDataGrid();
@@ -75,6 +86,25 @@ namespace MiBandImport.DataPanels
                 dataGridView.Name = "dataGridViewGeneralTab";
                 dataGridView.ReadOnly = true;
 
+                dataGridView.ColumnCount = 17;
+                dataGridView.Columns[0].DataPropertyName = "date";
+                dataGridView.Columns[1].DataPropertyName = "lightSleepMin";
+                dataGridView.Columns[2].DataPropertyName = "deepSleepMin";
+                dataGridView.Columns[3].DataPropertyName = "awakeMin";
+                dataGridView.Columns[4].DataPropertyName = "runTimeMin";
+                dataGridView.Columns[5].DataPropertyName = "runDistanceMeter";
+                dataGridView.Columns[6].DataPropertyName = "runBurnCalories";
+                dataGridView.Columns[7].DataPropertyName = "walkTimeMin";
+                dataGridView.Columns[8].DataPropertyName = "dailySteps";
+                dataGridView.Columns[9].DataPropertyName = "dailyDistanceMeter";
+                dataGridView.Columns[10].DataPropertyName = "dailyBurnCalories";
+                dataGridView.Columns[11].DataPropertyName = "dailyGoal";
+                dataGridView.Columns[12].DataPropertyName = "sleepStartTime";
+                dataGridView.Columns[13].DataPropertyName = "sleepEndTime";
+                dataGridView.Columns[14].DataPropertyName = "sleepDuration";
+                dataGridView.Columns[15].DataPropertyName = "sleepStart";
+                dataGridView.Columns[16].DataPropertyName = "sleepEnd";
+
                 dataGridView.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(OnColumnHeaderMouseClick);
 
                 this.Controls.Add(dataGridView);
@@ -83,109 +113,36 @@ namespace MiBandImport.DataPanels
 
         private void OnColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            /*DataGridViewColumn column = dataGridView.Columns[e.ColumnIndex];
-
-            switch(column.Name)
+            // wurde auf die Datumsspalte geklickt
+            DataGridViewColumn column = dataGridView.Columns[e.ColumnIndex];
+            if (column == null ||
+                column.DataPropertyName != "date")
             {
-                /*case "date":
-                    IComparer comp = new dateComparer();
-                    dataGridView.Sort(comp);
-                    break;*/
-            /*case "lightSleepMin":
-                col.HeaderText = "leichten Schlaf";
-                break;
+                // nein, dann die Standartsortiermethode verwenden
+                return;
+            }
 
-            case "deepSleepMin":
-                col.HeaderText = "Tiefschlaf";
-                break;
+            // Sortierrichtung bestimmen
+            ListSortDirection direction;
+            if (column.HeaderCell.SortGlyphDirection == SortOrder.None ||
+                column.HeaderCell.SortGlyphDirection == SortOrder.Descending)
+            {
+                // keine oder absteigend sortiert, dann jetzt aufsteigend
+                direction = ListSortDirection.Ascending;
+            }
+            else
+            {
+                // bisher aufsteigend sortiert, dann jetzt absteigen
+                direction = ListSortDirection.Descending;
+            }
 
-            case "awakeMin":
-                col.HeaderText = "wach";
-                break;
+            // Grid sortieren
+            dataGridView.Sort(new dateComparer(direction));
 
-            case "runTimeMin":
-                col.HeaderText = "Laufzeit";
-                break;
-
-            case "runDistanceMeter":
-                col.HeaderText = "Laufen Entfernung";
-                break;
-
-            case "runBurnCalories":
-                col.HeaderText = "Laufen Kalorien";
-                break;
-
-            case "walkTimeMin":
-                col.HeaderText = "Gehen Zeit";
-                break;
-
-            case "dailySteps":
-                col.HeaderText = "Schritte";
-                break;
-
-            case "dailyDistanceMeter":
-                col.HeaderText = "Entfernung";
-                break;
-
-            case "dailyBurnCalories":
-                col.HeaderText = "Kalorien";
-                break;
-
-            case "dailyGoal":
-                col.HeaderText = "Ziel Schritte";
-                break;
-
-            case "sleepStartTime":
-                col.HeaderText = "Einschlafzeit";
-                break;
-
-            case "sleepEndTime":
-                col.HeaderText = "Aufwachzeit";
-                break;
-
-            case "sleepDuration":
-                col.HeaderText = "Schlafdauer";
-                break;
-
-            case "sleepStart":
-                col.Visible = false;
-                break;
-
-            case "sleepEnd":
-                col.Visible = false;
-                break;*/
-            //}
-            //DataGridViewColumn oldColumn = dataGridView.SortedColumn;
-            //ListSortDirection direction = ListSortDirection.Ascending;
-
-            /*           // If oldColumn is null, then the DataGridView is not sorted.
-                       if (oldColumn != null)
-                       {
-                           // Sort the same column again, reversing the SortOrder.
-                           if (oldColumn == newColumn &&
-                               dataGridView.SortOrder == SortOrder.Ascending)
-                           {
-                               direction = ListSortDirection.Descending;
-                           }
-                           else
-                           {
-                               // Sort a new column and remove the old SortGlyph.
-                               direction = ListSortDirection.Ascending;
-                               oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
-                           }
-                       }
-                       else
-                       {
-                           direction = ListSortDirection.Ascending;
-                       }*/
-
-            // Sort the selected column.
-            /*dataGridView.Sort(newColumn, direction);
-            newColumn.HeaderCell.SortGlyphDirection =
-                direction == ListSortDirection.Ascending ?
-                SortOrder.Ascending : SortOrder.Descending;*/
-
-            //this.dataGridView.Sort(dataGridView.Columns[0], ListSortDirection.Descending);
+            // Kennzeichen für Sortierrichtung setzen
+            column.HeaderCell.SortGlyphDirection = direction == ListSortDirection.Ascending ?
+                                                                SortOrder.Ascending : 
+                                                                SortOrder.Descending;
         }
 
         /// <summary>
@@ -278,31 +235,31 @@ namespace MiBandImport.DataPanels
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
                 // Tagesziel und tägliche Schritte holen
-                var dailyGoal = Convert.ToInt32(row.Cells["dailyGoal"].Value);
-                var steps = Convert.ToInt32(row.Cells["dailySteps"].Value);
+                var dailyGoal = Convert.ToInt32(row.Cells[11].Value);
+                var steps = Convert.ToInt32(row.Cells[8].Value);
 
                 // wurde das Tagesziel erreicht
                 if (steps > dailyGoal)
                 {
                     // ja, dann grün
-                    row.Cells["dailySteps"].Style.BackColor = Color.LightGreen;
+                    row.Cells[8].Style.BackColor = Color.LightGreen;
                 }
                 else
                 {
                     // nein, dann rot
-                    row.Cells["dailySteps"].Style.BackColor = Color.Red;
+                    row.Cells[8].Style.BackColor = Color.Red;
                 }
 
                 // genug geschlafen?
-                if ((TimeSpan)row.Cells["sleepDuration"].Value < sleepDuration)
+                if ((TimeSpan)row.Cells[14].Value < sleepDuration)
                 {
                     // nein
-                    row.Cells["sleepDuration"].Style.BackColor = Color.Red;
+                    row.Cells[14].Style.BackColor = Color.Red;
                 }
                 else
                 {
                     // ja
-                    row.Cells["sleepDuration"].Style.BackColor = Color.LightGreen;
+                    row.Cells[14].Style.BackColor = Color.LightGreen;
                 }
             }
         }

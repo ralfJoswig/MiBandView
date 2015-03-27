@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="de" original="Resources.resx" tool-id="MultilingualAppToolkit" product-name="MiBand" product-version="1.0.0.0" build-num="0">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="3.1.1250.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="Resx">
+        <trans-unit id="Resx/Activ" translate="yes" xml:space="preserve">
+          <source>aktiv</source>
+          <target state="signed-off">aktiv</target>
+        </trans-unit>
+        <trans-unit id="Resx/ConnectionInfo" translate="yes" xml:space="preserve">
+          <source>Verbindungsinfo</source>
+          <target state="signed-off">Verbindungsinfo</target>
+        </trans-unit>
+        <trans-unit id="Resx/DailyGoal" translate="yes" xml:space="preserve">
+          <source>Tagesziel</source>
+          <target state="signed-off">Tagesziel</target>
+        </trans-unit>
+        <trans-unit id="Resx/Record" translate="yes" xml:space="preserve">
+          <source>Rekord</source>
+          <target state="signed-off">Rekord</target>
+        </trans-unit>
+        <trans-unit id="Resx/Sleep" translate="yes" xml:space="preserve">
+          <source>schlafen</source>
+          <target state="signed-off">schlafen</target>
+        </trans-unit>
+        <trans-unit id="Resx/SumOfMonth" translate="yes" xml:space="preserve">
+          <source>Monatszusammenfassung</source>
+          <target state="signed-off">Monatszusammenfassung</target>
+        </trans-unit>
+        <trans-unit id="Resx/SumOfWeek" translate="yes" xml:space="preserve">
+          <source>Wochenzusammenfassung</source>
+          <target state="signed-off">Wochenzusammenfassung</target>
+        </trans-unit>
+        <trans-unit id="Resx/TargetReached" translate="yes" xml:space="preserve">
+          <source>Ziel erreicht</source>
+          <target state="signed-off">Ziel erreicht</target>
+        </trans-unit>
+        <trans-unit id="Resx/Unlook" translate="yes" xml:space="preserve">
+          <source>Entsperren</source>
+          <target state="signed-off">Entsperren</target>
+        </trans-unit>
+        <trans-unit id="Resx/Walk" translate="yes" xml:space="preserve">
+          <source>gehen</source>
+          <target state="signed-off">gehen</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

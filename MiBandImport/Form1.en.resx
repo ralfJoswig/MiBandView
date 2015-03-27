@@ -151,7 +151,7 @@
     <value>History</value>
   </data>
   <data name="tabPageUserData.Text" xml:space="preserve">
-    <value>UserData</value>
+    <value>Info</value>
   </data>
   <data name="labelWorkDirPhone.Text" xml:space="preserve">
     <value>Workdir on Phone</value>

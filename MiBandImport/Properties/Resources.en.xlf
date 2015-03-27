@@ -84,11 +84,11 @@
           <target state="signed-off">It appeared the following error</target></trans-unit>
         <trans-unit id="Resx/FehlerPhoneNotAvabile" translate="yes" xml:space="preserve">
           <source>Can not connect to phone.</source>
-          <target state="new">Can not connect to phone.</target>
+          <target state="signed-off">Can not connect to phone.</target>
         </trans-unit>
         <trans-unit id="Resx/FehlerWorkDirPhone" translate="yes" xml:space="preserve">
           <source>Workdirk on phone not found. Last read data will be viewed.</source>
-          <target state="new">Workdirk on phone not found. Last read data will be viewed.</target>
+          <target state="signed-off">Workdirk on phone not found. Last read data will be viewed.</target>
         </trans-unit>
         <trans-unit id="Resx/ErgebnisAktion" translate="yes" xml:space="preserve">
           <source>Result of the action</source>

@@ -30,9 +30,6 @@ namespace MiBandImport.DataPanels
                 return;
             }
 
-            // neue Datenquelle für die Anzeige 
-            List<MiBandUser> dataShow = new List<MiBandUser>();
-
             // Daten für die Filterung der Anzeige prüfen
             foreach (MiBandUser miData in data.userData)
             {
@@ -40,13 +37,23 @@ namespace MiBandImport.DataPanels
                 if (miData.dateTime >= showFrom &&
                     miData.dateTime <= showTo)
                 {
-                    // ja, dann für Anzeige übernehmen
-                    dataShow.Add(miData);
+                    // Zeile hinzufügen
+                    dataGridView.Rows.Add(new Object[] {miData.id,
+                                                        miData.dateTime,
+                                                        miData.type,
+                                                        miData.right,
+                                                        miData.index,
+                                                        miData.json_string,
+                                                        miData.script_version,
+                                                        miData.lua_action_script,
+                                                        miData.text1,
+                                                        miData.text2,
+                                                        miData.start,
+                                                        miData.stop,
+                                                        miData.expire_time,
+                                                        miData.typeText});
                 }
             }
-
-            // Daten in Grid einfügen
-            dataGridView.DataSource = dataShow;
 
             // Grid für die modifizieren
             modifyDataGrid();
@@ -68,6 +75,22 @@ namespace MiBandImport.DataPanels
                 dataGridView.Dock = DockStyle.Fill;
                 dataGridView.Name = "dataGridViewPanel1";
                 dataGridView.ReadOnly = true;
+
+                dataGridView.ColumnCount = 14;
+                dataGridView.Columns[0].DataPropertyName = "id";
+                dataGridView.Columns[1].DataPropertyName = "dateTime";
+                dataGridView.Columns[2].DataPropertyName = "type";
+                dataGridView.Columns[3].DataPropertyName = "right";
+                dataGridView.Columns[4].DataPropertyName = "index";
+                dataGridView.Columns[5].DataPropertyName = "json_string";
+                dataGridView.Columns[6].DataPropertyName = "script_version";
+                dataGridView.Columns[7].DataPropertyName = "lua_action_script";
+                dataGridView.Columns[8].DataPropertyName = "text1";
+                dataGridView.Columns[9].DataPropertyName = "text2";
+                dataGridView.Columns[10].DataPropertyName = "start";
+                dataGridView.Columns[11].DataPropertyName = "stop";
+                dataGridView.Columns[12].DataPropertyName = "expire_time";
+                dataGridView.Columns[13].DataPropertyName = "typeText";
 
                 this.Controls.Add(dataGridView);
             }
@@ -96,6 +119,7 @@ namespace MiBandImport.DataPanels
                         break;
                     case "type":
                         col.HeaderText = Properties.Resources.Typ;
+                        col.Visible = false;
                         break;
                     case "right":
                         col.HeaderText = Properties.Resources.Berechtigung;
@@ -119,9 +143,6 @@ namespace MiBandImport.DataPanels
                         break;
                     case "text1":
                         col.HeaderText = Properties.Resources.Schritte;
-                        break;
-                    case "dailyDistanceMeter":
-                        col.HeaderText = Properties.Resources.Taetigkeit;
                         break;
                     case "text2":
                         col.HeaderText = Properties.Resources.Info;

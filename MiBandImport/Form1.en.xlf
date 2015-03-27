@@ -56,9 +56,8 @@
           <source>History</source>
           <target state="signed-off">History</target></trans-unit>
         <trans-unit id="Resx/tabPageUserData.Text" translate="yes" xml:space="preserve">
-          <source>UserData</source>
-          <target state="signed-off">UserData</target>
-        </trans-unit>
+          <source>Info</source>
+          <target state="signed-off">Info</target></trans-unit>
         <trans-unit id="Resx/$this.Text" translate="no" xml:space="preserve">
           <source>MiBandView</source>
           <target state="signed-off">MiBandView</target></trans-unit>
