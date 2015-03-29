@@ -11,7 +11,9 @@
  * if not, see <http://www.gnu.org/licenses/>
  */
 
+using MiBand;
 using System;
+using System.Collections.Generic;
 
 namespace MiBandImport.data
 {
@@ -34,6 +36,7 @@ namespace MiBandImport.data
         public TimeSpan sleepDuration { get { return getSleepDuration(); } set { sleepDuration = value; } }
         public UInt32 sleepStart { get; set; }
         public UInt32 sleepEnd { get; set; }
+        public List<MiBandDetail> detail { get; set; }
 
         /// <summary>
         /// Liefert die Uhrzeit für den Schlafbeginn als DateTime

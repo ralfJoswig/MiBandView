@@ -60,6 +60,10 @@
         <trans-unit id="Resx/Kalorien" translate="yes" xml:space="preserve">
           <source>Calories</source>
           <target state="signed-off">Kalorien</target></trans-unit>
+        <trans-unit id="Resx/Kategorie" translate="yes" xml:space="preserve">
+          <source>Category</source>
+          <target state="signed-off">Kategorie</target>
+        </trans-unit>
         <trans-unit id="Resx/JsonString" translate="yes" xml:space="preserve">
           <source>Json String</source>
           <target state="signed-off">Json String</target>
@@ -67,6 +71,10 @@
         <trans-unit id="Resx/Info" translate="yes" xml:space="preserve">
           <source>Info</source>
           <target state="signed-off">Info</target>
+        </trans-unit>
+        <trans-unit id="Resx/Intensiaet" translate="yes" xml:space="preserve">
+          <source>Intensity</source>
+          <target state="signed-off">Intensität</target>
         </trans-unit>
         <trans-unit id="Resx/Index" translate="yes" xml:space="preserve">
           <source>Index</source>

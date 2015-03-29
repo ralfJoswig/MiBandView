@@ -52,6 +52,10 @@
         <trans-unit id="Resx/tabPageOriginGraphSleep.Text" translate="yes" xml:space="preserve">
           <source>Graphic sleep</source>
           <target state="signed-off">Graphic sleep</target></trans-unit>
+        <trans-unit id="Resx/tabPageDayDetail.Text" translate="yes" xml:space="preserve">
+          <source>Tgesdetails</source>
+          <target state="new">Tgesdetails</target>
+        </trans-unit>
         <trans-unit id="Resx/tabPageOrigin.Text" translate="yes" xml:space="preserve">
           <source>History</source>
           <target state="signed-off">History</target></trans-unit>

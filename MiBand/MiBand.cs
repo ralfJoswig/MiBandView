@@ -24,6 +24,7 @@ namespace MiBand
         private string pathToDb = null;
         private string pathOrigin = null;
         private string pathUser = null;
+
         protected static SQLiteConnection connection = null;
         private List<MiBandRawData> rawData = new List<MiBandRawData>();
         private List<MiBandRawUser> rawUser = new List<MiBandRawUser>();
@@ -294,7 +295,7 @@ namespace MiBand
                 raw.date = readDateTimeFromDB(reader, "date");
                 raw.summary = readStringFromDB(reader, "summary");
                 raw.index = readStringFromDB(reader, "index");
-                raw.blob = readStringFromDB(reader, "blob");
+                raw.data = readByteArrayFromDB(reader, "data", 4320);
                 raw.sync = readUIntFromDB(reader, "sync");
 
                 // Datensatz merken
@@ -312,6 +313,33 @@ namespace MiBand
                 command.Dispose();
             }
 
+        }
+
+        /// <summary>
+        /// Liest Bytes in ein Array ein
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="column"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        private byte[] readByteArrayFromDB(SQLiteDataReader reader, string column, int count)
+        {
+            // Index der Spalte ermitteln
+            int index = reader.GetOrdinal(column);
+            byte[] buffer = new byte[count];
+
+            // enthält das Feld einen Wert auf der DB
+            if (reader.IsDBNull(index))
+            {
+                // nein, dann null zurückmelden
+                return buffer;
+            }
+            else
+            {
+                // Werte auslesen
+                reader.GetBytes(index, 0, buffer, 0, count);
+                return buffer;
+            }
         }
 
         /// <summary>
@@ -348,6 +376,9 @@ namespace MiBand
                 // Tagesziel ermitteln
                 miData.dailyGoal = findSubPart(raw.summary, "goal");
 
+                // Detaildaten umsetzen
+                miData.detail = convertDetailData(raw.data, miData.date);
+
                 // Datensatz merken
                 data.Add(miData);
             }
@@ -373,6 +404,36 @@ namespace MiBand
 
                 userData.Add(data);
             }
+        }
+
+        /// <summary>
+        /// Konvertiert die Detaildaten
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        private List<MiBandDetail> convertDetailData(byte[] data, DateTime date)
+        {
+            // Rückgabe vorbereiten
+            List<MiBandDetail> list = new List<MiBandDetail>();
+
+            // das Array durchlaufen
+            int index = 0;
+            int minute = 0;
+            while (index < data.Length - 1)
+            {
+                // einzelnen Satz aufbereiten
+                var record = new MiBandDetail();
+                record.dateTime = date.AddMinutes(minute++);
+                record.category = data[index++];
+                record.intensity = data[index++];
+                record.steps = data[index++];
+
+                // und Datensatz merken
+                list.Add(record);
+            }
+
+            return list;
         }
 
         /// <summary>

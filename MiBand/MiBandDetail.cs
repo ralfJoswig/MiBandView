@@ -13,22 +13,13 @@
 
 using System;
 
-namespace MiBandImport.data
+namespace MiBand
 {
-    class MiBandRawData
+    public class MiBandDetail
     {
-        public UInt32 id { get; set; }
-        public uint type { get; set; }
-        public uint source { get; set; }
-        public DateTime date { get; set; }
-        public string summary { get; set; }
-        public string index { get; set; }
-        public byte[] data { get; set; }
-        public uint sync { get; set; }
-
-        public MiBandRawData()
-        {
-            data = new byte[4096]; 
-        }
+        public DateTime dateTime { get; set; }
+        public int category { get; set; }
+        public int intensity { get; set; }
+        public int steps { get; set; }
     }
 }

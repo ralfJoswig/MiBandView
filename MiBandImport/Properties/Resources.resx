@@ -171,11 +171,17 @@
   <data name="Info" xml:space="preserve">
     <value>Info</value>
   </data>
+  <data name="Intensiaet" xml:space="preserve">
+    <value>Intensity</value>
+  </data>
   <data name="JsonString" xml:space="preserve">
     <value>Json String</value>
   </data>
   <data name="Kalorien" xml:space="preserve">
     <value>Calories</value>
+  </data>
+  <data name="Kategorie" xml:space="preserve">
+    <value>Category</value>
   </data>
   <data name="LaufenEntfernung" xml:space="preserve">
     <value>Run distance</value>

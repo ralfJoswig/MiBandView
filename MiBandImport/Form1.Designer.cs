@@ -50,6 +50,7 @@
             this.tabPageOriginGraphSteps = new System.Windows.Forms.TabPage();
             this.tabPageOriginGraphSleep = new System.Windows.Forms.TabPage();
             this.tabPageUserData = new System.Windows.Forms.TabPage();
+            this.tabPageDayDetail = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -183,6 +184,7 @@
             this.tabControlOriginal.Controls.Add(this.tabPageOriginTab);
             this.tabControlOriginal.Controls.Add(this.tabPageOriginGraphSteps);
             this.tabControlOriginal.Controls.Add(this.tabPageOriginGraphSleep);
+            this.tabControlOriginal.Controls.Add(this.tabPageDayDetail);
             resources.ApplyResources(this.tabControlOriginal, "tabControlOriginal");
             this.tabControlOriginal.Name = "tabControlOriginal";
             this.tabControlOriginal.SelectedIndex = 0;
@@ -210,6 +212,12 @@
             resources.ApplyResources(this.tabPageUserData, "tabPageUserData");
             this.tabPageUserData.Name = "tabPageUserData";
             this.tabPageUserData.UseVisualStyleBackColor = true;
+            // 
+            // tabPageDayDetail
+            // 
+            resources.ApplyResources(this.tabPageDayDetail, "tabPageDayDetail");
+            this.tabPageDayDetail.Name = "tabPageDayDetail";
+            this.tabPageDayDetail.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -255,6 +263,7 @@
         private System.Windows.Forms.TabPage tabPageOriginGraphSleep;
         private System.Windows.Forms.TextBox textBoxWorkDirPhone;
         private System.Windows.Forms.Label labelWorkDirPhone;
+        private System.Windows.Forms.TabPage tabPageDayDetail;
     }
 }
 

@@ -156,4 +156,7 @@
   <data name="labelWorkDirPhone.Text" xml:space="preserve">
     <value>Arb.-Verzeichnis </value>
   </data>
+  <data name="tabPageDayDetail.Text" xml:space="preserve">
+    <value>Tagesdetails</value>
+  </data>
 </root>

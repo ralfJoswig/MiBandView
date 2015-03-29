@@ -546,6 +546,33 @@
   <data name="&gt;&gt;tabPageOriginGraphSleep.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="tabPageDayDetail.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageDayDetail.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageDayDetail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1312, 439</value>
+  </data>
+  <data name="tabPageDayDetail.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageDayDetail.Text" xml:space="preserve">
+    <value>Tgesdetails</value>
+  </data>
+  <data name="&gt;&gt;tabPageDayDetail.Name" xml:space="preserve">
+    <value>tabPageDayDetail</value>
+  </data>
+  <data name="&gt;&gt;tabPageDayDetail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageDayDetail.Parent" xml:space="preserve">
+    <value>tabControlOriginal</value>
+  </data>
+  <data name="&gt;&gt;tabPageDayDetail.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="tabControlOriginal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>

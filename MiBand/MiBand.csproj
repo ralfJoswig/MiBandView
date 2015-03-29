@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="MiBand.cs" />
     <Compile Include="MiBandData.cs" />
+    <Compile Include="MiBandDetail.cs" />
     <Compile Include="MiBandRawData.cs" />
     <Compile Include="MiBandRawUser.cs" />
     <Compile Include="MiBandUser.cs" />

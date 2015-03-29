@@ -14,6 +14,7 @@
 using log4net;
 using MiBandImport.data;
 using MiBandImport.DataPanels;
+using MiBandImport.EventArgsClasses;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -26,9 +27,13 @@ namespace MiBandImport
     {
         public delegate void eventSleepDurationChanged(object sender, TimeSpan sleepTime);
         public delegate void eventShowSpanChanged(object sender, DateTime from, DateTime to);
-
+        
         public event eventSleepDurationChanged sleepDurationChanged;
         public event eventShowSpanChanged showSpanChanged;
+        
+        public delegate void SelectedDayChangedEventHandler(object sender, EventArgsSelectedDayChanged data);
+
+        public event SelectedDayChangedEventHandler selectectRowChanged;
 
         protected static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
@@ -38,6 +43,7 @@ namespace MiBandImport
         private PanelGeneralTab panelGeneralTab;
         private PanelGeneralGraphSteps panelGeneralGraphSteps;
         private PanelGeneralGraphSleep panelGeneralGraphSleep;
+        private PanelDayDetail panelDayDetail;
 
         private string pathDBshort = ".\\db\\";
         private string pathDB = Application.StartupPath + "\\db\\";
@@ -69,9 +75,9 @@ namespace MiBandImport
             maskedTextBoxSleepDur.Text = Properties.Settings.Default.SleepDuration;
 
             // Panles für die Daten erzeugen
-            initDataPanles();
-            
+            initDataPanles();            
         }
+
 
         /// <summary>
         /// Initialisiert die einzelnen Tabs
@@ -107,6 +113,9 @@ namespace MiBandImport
                 // Daten sollen aktualisiert werden wenn Schlafdauer oder Zeitraum geändert wurde
                 sleepDurationChanged += new eventSleepDurationChanged(panelGeneralTab.changeSleepTime);
                 showSpanChanged += new eventShowSpanChanged(panelGeneralTab.changeShowFromTo);
+
+                // wenn ein Tag ausgewählt wird, wollen wir das wissen
+                panelGeneralTab.selectectRowChanged += new PanelGeneralTab.SelectedDayChangedEventHandler(OnDayChanged);
             }
 
             // Panel hinzufügen
@@ -140,6 +149,34 @@ namespace MiBandImport
 
             // Panel hinzufügen
             panelGeneralGraphSleep.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
+
+            // Tab mit Tagesdetails
+            if (panelDayDetail == null)
+            {
+                panelDayDetail = new PanelDayDetail();
+                panelDayDetail.Dock = DockStyle.Fill;
+            }
+
+            // Panel hinzufügen
+            tabPageDayDetail.Controls.Add(panelDayDetail);
+
+            panelDayDetail.addListener();
+
+        }
+
+        /// <summary>
+        /// Gibt eine geänderte Auswahl für den Tag weiter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="data"></param>
+        private void OnDayChanged(object sender, EventArgsClasses.EventArgsSelectedDayChanged data)
+        {
+            // Gibt es Zuhörer
+            if (selectectRowChanged != null)
+            {
+                // ja, dann benachrichtigen
+                selectectRowChanged(this, data);
+            }
         }
 
         /// <summary>

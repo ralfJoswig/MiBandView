@@ -11,8 +11,10 @@
  * if not, see <http://www.gnu.org/licenses/>
  */
 
+using MiBand;
 using MiBandDataPanel;
 using MiBandImport.data;
+using MiBandImport.EventArgsClasses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +26,10 @@ namespace MiBandImport.DataPanels
 {
     internal class PanelGeneralTab : MiBandDataPanel.MiBandPanel
     {
+        public delegate void SelectedDayChangedEventHandler(object sender, EventArgsSelectedDayChanged data);
+
+        public event SelectedDayChangedEventHandler selectectRowChanged;
+
         private DataGridView dataGridView;
         private SortOrder sortDirectionDate = SortOrder.None;
         private DateTime initDateTime = new DateTime(0);
@@ -46,7 +52,7 @@ namespace MiBandImport.DataPanels
                 if (miData.date >= showFrom &&
                     miData.date <= showTo)
                 {
-                    // wenn kein Schalfstart,-ende oder -dauer gesetzt ist auch keine anzeigen
+                    // wenn kein Schlafstart,-ende oder -dauer gesetzt ist auch keine anzeigen
                     string sleepStartTime = string.Empty;
                     if (miData.sleepStartTime.CompareTo(initDateTime) != 0) 
                     {
@@ -82,12 +88,19 @@ namespace MiBandImport.DataPanels
                                                         sleepEndTime,
                                                         sleepDuration,
                                                         miData.sleepStart,
-                                                        miData.sleepEnd});
+                                                        miData.sleepEnd,
+                                                        miData.detail,
+                                                        miData});
                 }
             }
 
             // Grid für die modifizieren
             modifyDataGrid();
+        }
+
+        public override void addListener()
+        {
+
         }
 
         /// <summary>
@@ -106,8 +119,10 @@ namespace MiBandImport.DataPanels
                 dataGridView.Dock = DockStyle.Fill;
                 dataGridView.Name = "dataGridViewGeneralTab";
                 dataGridView.ReadOnly = true;
+                dataGridView.RowHeadersVisible = false;
+                dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-                dataGridView.ColumnCount = 17;
+                dataGridView.ColumnCount = 19;
                 dataGridView.Columns[0].DataPropertyName = "date";
                 dataGridView.Columns[1].DataPropertyName = "lightSleepMin";
                 dataGridView.Columns[2].DataPropertyName = "deepSleepMin";
@@ -125,13 +140,63 @@ namespace MiBandImport.DataPanels
                 dataGridView.Columns[14].DataPropertyName = "sleepDuration";
                 dataGridView.Columns[15].DataPropertyName = "sleepStart";
                 dataGridView.Columns[16].DataPropertyName = "sleepEnd";
+                dataGridView.Columns[17].DataPropertyName = "detail";
+                dataGridView.Columns[18].DataPropertyName = "data";
 
+                // auf einen Klick auf die Spaltenköpfe reagieren
                 dataGridView.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(OnColumnHeaderMouseClick);
 
+                // auf geänderte Zeilenauswahl reagieren
+                dataGridView.SelectionChanged += new EventHandler(selectionChanged);
+
+                // DataGridView zum Control hinzufügen
                 this.Controls.Add(dataGridView);
             }
         }
 
+        /// <summary>
+        /// Auf eine geänderte Zeilenauswahl reagieren
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void selectionChanged(object sender, EventArgs e)
+        {
+            // wenn keine Zeile ausgewählt ist
+            if (dataGridView == null ||
+                dataGridView.SelectedRows == null ||
+                dataGridView.SelectedRows.Count == 0)
+            {
+                // doch nichts tun
+                return;
+            }
+
+            // ausgewählte Zeile holen
+            DataGridViewRow row = (DataGridViewRow)dataGridView.SelectedRows[0];
+
+            // zur Sicherheit prüfen ob Daten in der Zeile hinterlegt sind
+            if (row.Cells[18].Value is MiBandData)
+            {
+                // Daten sind hinterlegt, dann Daten holen
+                MiBandData miBand = (MiBandData)row.Cells[18].Value;
+
+                // Parameter für den Aufruf der Zuhörer erzeugen
+                EventArgsSelectedDayChanged eventArg = new EventArgsSelectedDayChanged();
+                eventArg.data = miBand;
+
+                // Gibt es Zuhörer
+                if (selectectRowChanged != null)
+                {
+                    // ja, dann benachrichtigen
+                    selectectRowChanged(this, eventArg);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Reagiert auf den Klick auf einen Spaltenkopf
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // wurde auf die Datumsspalte geklickt
@@ -249,6 +314,14 @@ namespace MiBandImport.DataPanels
                     case "sleepEnd":
                         col.Visible = false;
                         break;
+
+                    case "detail":
+                        col.Visible = false;
+                        break;
+
+                    case "data":
+                        col.Visible = false;
+                        break;
                 }
             }
 
@@ -292,5 +365,6 @@ namespace MiBandImport.DataPanels
                 }
             }
         }
+
     }
 }

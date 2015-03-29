@@ -223,6 +223,15 @@ namespace MiBandImport.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Intensity ähnelt.
+        /// </summary>
+        internal static string Intensiaet {
+            get {
+                return ResourceManager.GetString("Intensiaet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Json String ähnelt.
         /// </summary>
         internal static string JsonString {
@@ -237,6 +246,15 @@ namespace MiBandImport.Properties {
         internal static string Kalorien {
             get {
                 return ResourceManager.GetString("Kalorien", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Category ähnelt.
+        /// </summary>
+        internal static string Kategorie {
+            get {
+                return ResourceManager.GetString("Kategorie", resourceCulture);
             }
         }
         

@@ -219,4 +219,10 @@
   <data name="FehlerWorkDirPhone" xml:space="preserve">
     <value>Workdirk on phone not found. Last read data will be viewed.</value>
   </data>
+  <data name="Kategorie" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Intensiaet" xml:space="preserve">
+    <value>Intensity</value>
+  </data>
 </root>

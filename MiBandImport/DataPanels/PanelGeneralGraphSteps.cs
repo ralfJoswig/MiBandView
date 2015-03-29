@@ -65,6 +65,11 @@ namespace MiBandImport.DataPanels
 
         }
 
+        public override void addListener()
+        {
+
+        }
+
         /// <summary>
         /// Eigene Komponenten initialisieren
         /// </summary>

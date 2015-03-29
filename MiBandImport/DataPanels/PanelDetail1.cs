@@ -59,6 +59,11 @@ namespace MiBandImport.DataPanels
             modifyDataGrid();
         }
 
+        public override void addListener()
+        {
+
+        }
+
         /// <summary>
         /// Eigene Komponenten initialisieren
         /// </summary>

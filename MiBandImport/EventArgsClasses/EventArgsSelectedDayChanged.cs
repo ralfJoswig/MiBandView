@@ -1,6 +1,6 @@
 ﻿/**
  * Copyright (C) 2015 Ralf Joswig
- * 
+ *
  * This program is free software; you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
  * Foundation; either version 3 of the License, or (at your option) any later version.
@@ -11,24 +11,13 @@
  * if not, see <http://www.gnu.org/licenses/>
  */
 
-using System;
+using MiBandImport.data;
 
-namespace MiBandImport.data
+namespace MiBandImport.EventArgsClasses
 {
-    class MiBandRawData
-    {
-        public UInt32 id { get; set; }
-        public uint type { get; set; }
-        public uint source { get; set; }
-        public DateTime date { get; set; }
-        public string summary { get; set; }
-        public string index { get; set; }
-        public byte[] data { get; set; }
-        public uint sync { get; set; }
+    public class EventArgsSelectedDayChanged
 
-        public MiBandRawData()
-        {
-            data = new byte[4096]; 
-        }
+    {
+        public MiBandData data { get; set; }
     }
 }

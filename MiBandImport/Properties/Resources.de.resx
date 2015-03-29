@@ -222,4 +222,10 @@
   <data name="FehlerWorkDirPhone" xml:space="preserve">
     <value>Arbeitsverzeichnis auf Smartphone nicht gefunden. Zuletzt geleseme Daten werden angezeigt.</value>
   </data>
+  <data name="Kategorie" xml:space="preserve">
+    <value>Kategorie</value>
+  </data>
+  <data name="Intensiaet" xml:space="preserve">
+    <value>Intensität</value>
+  </data>
 </root>
