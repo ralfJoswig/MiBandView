@@ -42,6 +42,10 @@ namespace MiBandImport.DataPanels
                 return;
             }
 
+            // alte Daten löschen
+            seriesSleep.Points.Clear();
+            seriesSleepGoal.Points.Clear();
+
             // Daten für die Filterung der Anzeige prüfen
             foreach (var miData in data.data)
             {
@@ -65,10 +69,55 @@ namespace MiBandImport.DataPanels
 
         }
 
-
+        /// <summary>
+        /// Festlegen auf welche Änderungen die Tabelle reagieren soll
+        /// </summary>
         public override void addListener()
         {
-            
+            // geänderte Schlafdauer
+            ((Form1)this.TopLevelControl).sleepDurationChanged += new Form1.SleepDurationChangedEventHandler(OnSleepDurationChanged);
+
+            // geänderte Auswahl der Tage
+            ((Form1)this.TopLevelControl).showSpanChanged += new Form1.ShowSpanChangedEventHandler(OnShowSpanChanged);
+        }
+
+        /// <summary>
+        /// Reagiert auf Änderungen in der Auswahl der anzuzeigenden Tage
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="days"></param>
+        private void OnShowSpanChanged(object sender, EventArgsClasses.EventArgsDaysToDispay days)
+        {
+            // merken welche Tage angezeigt werden sollen
+            showFrom = days.DisplayFrom;
+            showTo = days.DisplayTo;
+
+            // für die Datumsfelder die Zeit zurücksetzen
+            showFrom = new DateTime(showFrom.Year, showFrom.Month, showFrom.Day, 0, 0, 0);
+            showTo = new DateTime(showTo.Year, showTo.Month, showTo.Day, 23, 59, 59);
+
+            // wenn Daten vorhanden sind, diese neu anzeigen
+            if (data != null)
+            {
+                showData();
+            }
+        }
+
+        /// <summary>
+        /// Reagiert auf Änderungen der Schlafdauer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="duration"></param>
+        private void OnSleepDurationChanged(object sender, EventArgsClasses.EventArgsSleepDurationChanged duration)
+        {
+            // geänderte Schlafdauer merken
+            sleepDuration = duration.SleepDuration;
+
+            // wenn Daten vorhanden sind, diese neu anzeigen
+            if (data != null)
+            {
+                showData();
+            }
         }
 
         /// <summary>
@@ -132,6 +181,8 @@ namespace MiBandImport.DataPanels
             {
                 seriesSleepGoal.Points.Clear();
             }
+
+            this.Dock = DockStyle.Fill;
         }
     }
 }

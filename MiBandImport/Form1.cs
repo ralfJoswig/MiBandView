@@ -25,14 +25,12 @@ namespace MiBandImport
 {
     public partial class Form1 : Form
     {
-        public delegate void eventSleepDurationChanged(object sender, TimeSpan sleepTime);
-        public delegate void eventShowSpanChanged(object sender, DateTime from, DateTime to);
-        
-        public event eventSleepDurationChanged sleepDurationChanged;
-        public event eventShowSpanChanged showSpanChanged;
-        
+        public delegate void SleepDurationChangedEventHandler(object sender, EventArgsSleepDurationChanged duration);
+        public delegate void ShowSpanChangedEventHandler(object sender, EventArgsDaysToDispay days);
         public delegate void SelectedDayChangedEventHandler(object sender, EventArgsSelectedDayChanged data);
 
+        public event SleepDurationChangedEventHandler sleepDurationChanged;
+        public event ShowSpanChangedEventHandler showSpanChanged;
         public event SelectedDayChangedEventHandler selectectRowChanged;
 
         protected static readonly ILog log = LogManager.GetLogger(typeof(Program));
@@ -94,10 +92,7 @@ namespace MiBandImport
             {
                 panelDetail1 = new PanelDetail1();
                 tabPageUserData.Controls.Add(panelDetail1);
-                panelDetail1.Dock = DockStyle.Fill;
-
-                // Daten sollen aktualisiert werden wenn der angezeigte Zeitraum verändert wurde
-                showSpanChanged += new eventShowSpanChanged(panelDetail1.changeShowFromTo);
+                panelDetail1.addListener();
             }
 
             // Panel hinzufügen
@@ -108,17 +103,13 @@ namespace MiBandImport
             {
                 panelGeneralTab = new PanelGeneralTab();
                 tabPageOriginTab.Controls.Add(panelGeneralTab);
-                panelGeneralTab.Dock = DockStyle.Fill;
-
-                // Daten sollen aktualisiert werden wenn Schlafdauer oder Zeitraum geändert wurde
-                sleepDurationChanged += new eventSleepDurationChanged(panelGeneralTab.changeSleepTime);
-                showSpanChanged += new eventShowSpanChanged(panelGeneralTab.changeShowFromTo);
+                panelGeneralTab.addListener();
 
                 // wenn ein Tag ausgewählt wird, wollen wir das wissen
                 panelGeneralTab.selectectRowChanged += new PanelGeneralTab.SelectedDayChangedEventHandler(OnDayChanged);
             }
 
-            // Panel hinzufügen
+            // Daten anzeigen
             panelGeneralTab.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
 
             // Tab mit der Grafik für die Schritte erzeugen wenn noch nicht geschehen
@@ -126,25 +117,18 @@ namespace MiBandImport
             {
                 panelGeneralGraphSteps = new PanelGeneralGraphSteps();
                 tabPageOriginGraphSteps.Controls.Add(panelGeneralGraphSteps);
-                panelGeneralGraphSteps.Dock = DockStyle.Fill;
-
-                // Daten sollen aktualisiert werden wenn der Zeitraum geändert wurde
-                showSpanChanged += new eventShowSpanChanged(panelGeneralGraphSteps.changeShowFromTo);
+                panelGeneralGraphSteps.addListener();
             }
 
-            // Panel hinzufügen
+            // Daten anzeigen
             panelGeneralGraphSteps.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
 
-            // Tab mit der Grafik mit der Schalfdauer
+            // Tab mit der Grafik mit der Schlafdauer
             if (panelGeneralGraphSleep == null)
             {
                 panelGeneralGraphSleep = new PanelGeneralGraphSleep();
                 tabPageOriginGraphSleep.Controls.Add(panelGeneralGraphSleep);
-                panelGeneralGraphSleep.Dock = DockStyle.Fill;
-
-                // Daten sollen aktualisiert werden wenn Schlafdauer oder Zeitraum verändert wurde
-                sleepDurationChanged += new eventSleepDurationChanged(panelGeneralGraphSleep.changeSleepTime);
-                showSpanChanged += new eventShowSpanChanged(panelGeneralGraphSleep.changeShowFromTo);
+                panelGeneralGraphSleep.addListener();
             }
 
             // Panel hinzufügen
@@ -154,14 +138,9 @@ namespace MiBandImport
             if (panelDayDetail == null)
             {
                 panelDayDetail = new PanelDayDetail();
-                panelDayDetail.Dock = DockStyle.Fill;
+                tabPageDayDetail.Controls.Add(panelDayDetail);
+                panelDayDetail.addListener();
             }
-
-            // Panel hinzufügen
-            tabPageDayDetail.Controls.Add(panelDayDetail);
-
-            panelDayDetail.addListener();
-
         }
 
         /// <summary>
@@ -531,7 +510,12 @@ namespace MiBandImport
                                                  0);
 
                 // und die geänderte Schlafdauer an alle mitteilen die es wissen wollen
-                sleepDurationChanged(this, timeSpanSleep);
+                if (sleepDurationChanged != null)
+                {
+                    EventArgsSleepDurationChanged args = new EventArgsSleepDurationChanged();
+                    args.SleepDuration = timeSpanSleep;
+                    sleepDurationChanged(this, args);
+                }
             }
         }
 
@@ -543,7 +527,13 @@ namespace MiBandImport
         private void dateTimePickerShowFrom_ValueChanged(object sender, EventArgs e)
         {
             // Aktuellen Wert an alle verteilen die es wissen wollen
-            showSpanChanged(this, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
+            if (showSpanChanged != null)
+            {
+                EventArgsDaysToDispay args = new EventArgsDaysToDispay();
+                args.DisplayFrom = dateTimePickerShowFrom.Value;
+                args.DisplayTo = dateTimePickerShowTo.Value;
+                showSpanChanged(this, args);
+            }
         }
     }
 }

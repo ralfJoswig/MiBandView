@@ -25,10 +25,15 @@ namespace MiBandImport.DataPanels
     {
         private DataGridView dataGridView;
 
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
         public PanelDayDetail()
         {
+            // ist das Datagrid bereits vorhanden
             if (dataGridView == null)
             {
+                // nein, dann anlegen
                 dataGridView = new DataGridView();
                 dataGridView.AllowUserToAddRows = false;
                 dataGridView.AllowUserToDeleteRows = false;
@@ -38,14 +43,16 @@ namespace MiBandImport.DataPanels
                 dataGridView.Name = "dataGridViewDayDetail";
                 dataGridView.ReadOnly = true;
                 dataGridView.RowHeadersVisible = false;
+                this.Dock = DockStyle.Fill;
 
+                // Spalten einfügen
                 dataGridView.ColumnCount = 4;
                 dataGridView.Columns[0].DataPropertyName = "date";
                 dataGridView.Columns[1].DataPropertyName = "category";
                 dataGridView.Columns[2].DataPropertyName = "intensity";
                 dataGridView.Columns[3].DataPropertyName = "steps";
 
-                // die einzelnen Datensätze untersuchen
+                // die einzelnen Spalten bearbeiten
                 foreach (DataGridViewColumn col in dataGridView.Columns)
                 {
                     // Spaltenbreite auf Optimum setzen
@@ -69,21 +76,33 @@ namespace MiBandImport.DataPanels
                     }
                 }
 
+                // Datagrid hinzufügen
                 this.Controls.Add(dataGridView);                
             }
         }
 
+        /// <summary>
+        /// Control soll mitbekommen wenn der ausgewählte Tag geändert wird
+        /// </summary>
         public void addListener()
         {
             ((Form1)this.TopLevelControl).selectectRowChanged += new Form1.SelectedDayChangedEventHandler(OnDayChanged);
         }
 
+        /// <summary>
+        /// Reagiert auf eine geänderte Auswahl des Tages
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="data"></param>
         private void OnDayChanged(object sender, EventArgsClasses.EventArgsSelectedDayChanged data)
         {
+            // alte Anzeige löschen
             dataGridView.Rows.Clear();
 
+            // Liste mit den Detaildaten holen
             List<MiBandDetail> detailList = data.data.detail;
 
+            // die Zeilen in den Grid einfügen
             foreach (MiBandDetail detail in detailList)
             {
                 // Zeile hinzufügen

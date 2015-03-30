@@ -12,6 +12,7 @@
  */
 
 using MiBand;
+using MiBandImport.EventArgsClasses;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -29,6 +30,9 @@ namespace MiBandImport.DataPanels
             {
                 return;
             }
+
+            // alte Daten löschen
+            dataGridView.Rows.Clear();
 
             // Daten für die Filterung der Anzeige prüfen
             foreach (MiBandUser miData in data.userData)
@@ -59,9 +63,35 @@ namespace MiBandImport.DataPanels
             modifyDataGrid();
         }
 
+        /// <summary>
+        /// Festlegen auf welche Änderungen die Tabelle reagieren soll
+        /// </summary>
         public override void addListener()
         {
+            // geänderte Auswahl der Tage
+            ((Form1)this.TopLevelControl).showSpanChanged += new Form1.ShowSpanChangedEventHandler(OnShowSpanChanged);
+        }
 
+        /// <summary>
+        /// Reagiert auf Änderungen in der Auswahl der anzuzeigenden Tage
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="days"></param>
+        private void OnShowSpanChanged(object sender, EventArgsDaysToDispay days)
+        {
+            // merken welche Tage angezeigt werden sollen
+            showFrom = days.DisplayFrom;
+            showTo = days.DisplayTo;
+
+            // für die Datumsfelder die Zeit zurücksetzen
+            showFrom = new DateTime(showFrom.Year, showFrom.Month, showFrom.Day, 0, 0, 0);
+            showTo = new DateTime(showTo.Year, showTo.Month, showTo.Day, 23, 59, 59);
+
+            // wenn Daten vorhanden sind, diese neu anzeigen
+            if (data != null)
+            {
+                showData();
+            }   
         }
 
         /// <summary>
@@ -80,6 +110,7 @@ namespace MiBandImport.DataPanels
                 dataGridView.Dock = DockStyle.Fill;
                 dataGridView.Name = "dataGridViewPanel1";
                 dataGridView.ReadOnly = true;
+                this.Dock = DockStyle.Fill;
 
                 dataGridView.ColumnCount = 14;
                 dataGridView.Columns[0].DataPropertyName = "id";

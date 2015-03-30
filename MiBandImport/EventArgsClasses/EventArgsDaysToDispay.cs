@@ -1,4 +1,4 @@
-﻿/**
+﻿ /*
  * Copyright (C) 2015 Ralf Joswig
  *
  * This program is free software; you can redistribute it and/or modify it under
@@ -11,13 +11,13 @@
  * if not, see <http://www.gnu.org/licenses/>
  */
 
-using MiBandImport.data;
 using System;
 
 namespace MiBandImport.EventArgsClasses
 {
-    public class EventArgsSelectedDayChanged : EventArgs
+    public class EventArgsDaysToDispay
     {
-        public MiBandData data { get; set; }
+        public DateTime DisplayFrom {get; set;}
+        public DateTime DisplayTo {get; set;}
     }
 }

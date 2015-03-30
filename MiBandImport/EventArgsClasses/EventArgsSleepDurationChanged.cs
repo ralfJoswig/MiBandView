@@ -11,13 +11,12 @@
  * if not, see <http://www.gnu.org/licenses/>
  */
 
-using MiBandImport.data;
 using System;
 
 namespace MiBandImport.EventArgsClasses
 {
-    public class EventArgsSelectedDayChanged : EventArgs
+    public class EventArgsSleepDurationChanged : EventArgs
     {
-        public MiBandData data { get; set; }
+        public TimeSpan SleepDuration { get; set; }
     }
 }
