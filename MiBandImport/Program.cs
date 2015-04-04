@@ -35,7 +35,7 @@ namespace MiBandImport
         [STAThread]
         static void Main()
         {
-            //Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
 
             // Logger initialisieren
             try

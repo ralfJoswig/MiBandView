@@ -43,14 +43,20 @@ namespace MiBandImport.DataPanels
                 dataGridView.Name = "dataGridViewDayDetail";
                 dataGridView.ReadOnly = true;
                 dataGridView.RowHeadersVisible = false;
+                dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 this.Dock = DockStyle.Fill;
 
                 // Spalten einfügen
-                dataGridView.ColumnCount = 4;
+                dataGridView.ColumnCount = 9;
                 dataGridView.Columns[0].DataPropertyName = "date";
-                dataGridView.Columns[1].DataPropertyName = "category";
-                dataGridView.Columns[2].DataPropertyName = "intensity";
-                dataGridView.Columns[3].DataPropertyName = "steps";
+                dataGridView.Columns[1].DataPropertyName = "description";
+                dataGridView.Columns[2].DataPropertyName = "steps";
+                dataGridView.Columns[3].DataPropertyName = "walkDistance";
+                dataGridView.Columns[4].DataPropertyName = "runDistance";
+                dataGridView.Columns[5].DataPropertyName = "walkCalories";
+                dataGridView.Columns[6].DataPropertyName = "runCalories";
+                dataGridView.Columns[7].DataPropertyName = "rawActivity";
+                dataGridView.Columns[8].DataPropertyName = "rawSensorData";
 
                 // die einzelnen Spalten bearbeiten
                 foreach (DataGridViewColumn col in dataGridView.Columns)
@@ -64,14 +70,29 @@ namespace MiBandImport.DataPanels
                         case "date":
                             col.HeaderText = Properties.Resources.Datum;
                             break;
-                        case "category":
-                            col.HeaderText = Properties.Resources.Kategorie;
+                        case "description":
+                            col.HeaderText = Properties.Resources.Beschreibung;
                             break;
-                        case "intensity":
-                            col.HeaderText = Properties.Resources.Intensiaet;
+                        case "walkDistance":
+                            col.HeaderText = Properties.Resources.GehenEntfernung;
                             break;
                         case "steps":
                             col.HeaderText = Properties.Resources.Schritte;
+                            break;
+                        case "walkCalories":
+                            col.HeaderText = Properties.Resources.GehenKalorien;
+                            break;
+                        case "runDistance":
+                            col.HeaderText = Properties.Resources.LaufenEntfernung;
+                            break;
+                        case "runCalories":
+                            col.HeaderText = Properties.Resources.LaufenKalorien;
+                            break;
+                        case "rawActivity":
+                            col.HeaderText = Properties.Resources.RohdatenAktivität;
+                            break;
+                        case "rawSensorData":
+                            col.HeaderText = Properties.Resources.RohdatenSensorwert;
                             break;
                     }
                 }
@@ -107,9 +128,15 @@ namespace MiBandImport.DataPanels
             {
                 // Zeile hinzufügen
                 dataGridView.Rows.Add(new Object[] {detail.dateTime.ToString(),
+                                                    detail.discription,
+                                                    detail.steps,
+                                                    Math.Round(detail.walkDistance, 2),
+                                                    Math.Round(detail.runDistance, 2),
+                                                    Math.Round(detail.walkCalories, 2),
+                                                    Math.Round(detail.runCalories, 2),
                                                     detail.category,
-                                                    detail.intensity,
-                                                    detail.steps,});
+                                                    detail.intensity});
+                
             }
         }
     }

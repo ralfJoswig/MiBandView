@@ -41,6 +41,12 @@
         <trans-unit id="Resx/Minuten" translate="yes" xml:space="preserve">
           <source>Minutes</source>
           <target state="signed-off">Minuten</target></trans-unit>
+        <trans-unit id="Resx/RohdatenSensorwert" translate="yes" xml:space="preserve">
+          <source>Raw Sensordata</source>
+          <target state="signed-off">Rohdaten Sensorwert</target></trans-unit>
+        <trans-unit id="Resx/RohdatenAktivität" translate="yes" xml:space="preserve">
+          <source>Raw activity</source>
+          <target state="signed-off">Rohdaten Aktivität</target></trans-unit>
         <trans-unit id="Resx/LuaScript" translate="yes" xml:space="preserve">
           <source>LUA Script</source>
           <target state="signed-off">LUA Script</target>
@@ -60,10 +66,6 @@
         <trans-unit id="Resx/Kalorien" translate="yes" xml:space="preserve">
           <source>Calories</source>
           <target state="signed-off">Kalorien</target></trans-unit>
-        <trans-unit id="Resx/Kategorie" translate="yes" xml:space="preserve">
-          <source>Category</source>
-          <target state="signed-off">Kategorie</target>
-        </trans-unit>
         <trans-unit id="Resx/JsonString" translate="yes" xml:space="preserve">
           <source>Json String</source>
           <target state="signed-off">Json String</target>
@@ -71,10 +73,6 @@
         <trans-unit id="Resx/Info" translate="yes" xml:space="preserve">
           <source>Info</source>
           <target state="signed-off">Info</target>
-        </trans-unit>
-        <trans-unit id="Resx/Intensiaet" translate="yes" xml:space="preserve">
-          <source>Intensity</source>
-          <target state="signed-off">Intensität</target>
         </trans-unit>
         <trans-unit id="Resx/Index" translate="yes" xml:space="preserve">
           <source>Index</source>
@@ -98,6 +96,12 @@
           <source>Workdirk on phone not found. Last read data will be viewed.</source>
           <target state="signed-off">Arbeitsverzeichnis auf Smartphone nicht gefunden. Zuletzt geleseme Daten werden angezeigt.</target>
         </trans-unit>
+        <trans-unit id="Resx/GehenKalorien" translate="yes" xml:space="preserve">
+          <source>Walk Calories</source>
+          <target state="signed-off">Gehen Kalorien</target></trans-unit>
+        <trans-unit id="Resx/GehenEntfernung" translate="yes" xml:space="preserve">
+          <source>Walk Distance</source>
+          <target state="signed-off">Gehen Entfernung</target></trans-unit>
         <trans-unit id="Resx/ErgebnisAktion" translate="yes" xml:space="preserve">
           <source>Result of the action</source>
           <target state="signed-off">Ergebnis der Aktion</target></trans-unit>
@@ -119,6 +123,9 @@
         <trans-unit id="Resx/Berechtigung" translate="yes" xml:space="preserve">
           <source>Permission</source>
           <target state="signed-off">Berechtigung</target></trans-unit>
+        <trans-unit id="Resx/Beschreibung" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <target state="signed-off">Beschreibung</target></trans-unit>
         <trans-unit id="Resx/BackupBestätigen" translate="yes" xml:space="preserve">
           <source>Confirm backup on your Smartphone</source>
           <target state="signed-off">Backup auf dem Smartphone bestätigen</target></trans-unit>

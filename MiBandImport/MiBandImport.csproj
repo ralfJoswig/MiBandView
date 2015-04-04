@@ -11,7 +11,7 @@
     <AssemblyName>MiBandView</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SupportedCultures>de;en</SupportedCultures>
+    <SupportedCultures>de</SupportedCultures>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -86,12 +86,6 @@
       <culture>de</culture>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.en.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Form1.en.xlf</DependentUpon>
-      <culture>en</culture>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,12 +94,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.de.xlf</DependentUpon>
       <culture>de</culture>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.en.resx">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.en.xlf</DependentUpon>
-      <culture>en</culture>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -174,17 +162,9 @@
       <Generator>XliffResxGenerator</Generator>
       <LastGenOutput>Form1.de.resx</LastGenOutput>
     </XliffResource>
-    <XliffResource Include="Form1.en.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>Form1.en.resx</LastGenOutput>
-    </XliffResource>
     <XliffResource Include="Properties\Resources.de.xlf">
       <Generator>XliffResxGenerator</Generator>
       <LastGenOutput>Resources.de.resx</LastGenOutput>
-    </XliffResource>
-    <XliffResource Include="Properties\Resources.en.xlf">
-      <Generator>XliffResxGenerator</Generator>
-      <LastGenOutput>Resources.en.resx</LastGenOutput>
     </XliffResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

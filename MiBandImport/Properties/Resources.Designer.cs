@@ -106,6 +106,15 @@ namespace MiBandImport.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Description ähnelt.
+        /// </summary>
+        internal static string Beschreibung {
+            get {
+                return ResourceManager.GetString("Beschreibung", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Date ähnelt.
         /// </summary>
         internal static string Datum {
@@ -187,6 +196,24 @@ namespace MiBandImport.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Walk Distance ähnelt.
+        /// </summary>
+        internal static string GehenEntfernung {
+            get {
+                return ResourceManager.GetString("GehenEntfernung", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Walk Calories ähnelt.
+        /// </summary>
+        internal static string GehenKalorien {
+            get {
+                return ResourceManager.GetString("GehenKalorien", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Walk time ähnelt.
         /// </summary>
         internal static string GehenZeit {
@@ -223,15 +250,6 @@ namespace MiBandImport.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Intensity ähnelt.
-        /// </summary>
-        internal static string Intensiaet {
-            get {
-                return ResourceManager.GetString("Intensiaet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Json String ähnelt.
         /// </summary>
         internal static string JsonString {
@@ -246,15 +264,6 @@ namespace MiBandImport.Properties {
         internal static string Kalorien {
             get {
                 return ResourceManager.GetString("Kalorien", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Category ähnelt.
-        /// </summary>
-        internal static string Kategorie {
-            get {
-                return ResourceManager.GetString("Kategorie", resourceCulture);
             }
         }
         
@@ -309,6 +318,24 @@ namespace MiBandImport.Properties {
         internal static string Minuten {
             get {
                 return ResourceManager.GetString("Minuten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Raw activity ähnelt.
+        /// </summary>
+        internal static string RohdatenAktivität {
+            get {
+                return ResourceManager.GetString("RohdatenAktivität", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Raw Sensordata ähnelt.
+        /// </summary>
+        internal static string RohdatenSensorwert {
+            get {
+                return ResourceManager.GetString("RohdatenSensorwert", resourceCulture);
             }
         }
         

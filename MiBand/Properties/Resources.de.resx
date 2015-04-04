@@ -117,34 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Activ" xml:space="preserve">
+  <data name="aktiv" xml:space="preserve">
     <value>aktiv</value>
   </data>
-  <data name="ConnectionInfo" xml:space="preserve">
-    <value>Verbindungsinfo</value>
-  </data>
-  <data name="DailyGoal" xml:space="preserve">
-    <value>Tagesziel</value>
-  </data>
-  <data name="Record" xml:space="preserve">
-    <value>Rekord</value>
-  </data>
-  <data name="Sleep" xml:space="preserve">
+  <data name="schlafen" xml:space="preserve">
     <value>schlafen</value>
   </data>
-  <data name="SumOfMonth" xml:space="preserve">
+  <data name="Run" xml:space="preserve">
+    <value>laufen</value>
+  </data>
+  <data name="Rekord" xml:space="preserve">
+    <value>Rekord</value>
+  </data>
+  <data name="Monatszusammenfassung" xml:space="preserve">
     <value>Monatszusammenfassung</value>
   </data>
-  <data name="SumOfWeek" xml:space="preserve">
-    <value>Wochenzusammenfassung</value>
+  <data name="Idle" xml:space="preserve">
+    <value>Inaktiv</value>
   </data>
-  <data name="TargetReached" xml:space="preserve">
-    <value>Ziel erreicht</value>
+  <data name="gehen" xml:space="preserve">
+    <value>Gehen</value>
   </data>
-  <data name="Unlook" xml:space="preserve">
+  <data name="Entsperren" xml:space="preserve">
     <value>Entsperren</value>
   </data>
+  <data name="Sleep" xml:space="preserve">
+    <value>Schlaf</value>
+  </data>
+  <data name="Verbindungsinfo" xml:space="preserve">
+    <value>Verbindungsinfo</value>
+  </data>
+  <data name="Tagesziel" xml:space="preserve">
+    <value>Tagesziel</value>
+  </data>
   <data name="Walk" xml:space="preserve">
-    <value>gehen</value>
+    <value>Gehen</value>
+  </data>
+  <data name="ZielErreicht" xml:space="preserve">
+    <value>Ziel erreicht</value>
+  </data>
+  <data name="Wochenzusammenfassung" xml:space="preserve">
+    <value>Tageszusammenfassung</value>
   </data>
 </root>

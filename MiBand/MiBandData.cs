@@ -67,7 +67,7 @@ namespace MiBandImport.data
             // Schlafbeginn ungleich -ende
             if (sleepStart != sleepEnd)
             {
-                // ja, dann Endezeit aufbereiten
+                // ja, dann Endzeit aufbereiten
                 DateTime sleepDate = new DateTime(1970, 1, 1);
                 return sleepDate.AddSeconds(sleepEnd).ToLocalTime();
             }

@@ -49,8 +49,8 @@
             this.tabPageOriginTab = new System.Windows.Forms.TabPage();
             this.tabPageOriginGraphSteps = new System.Windows.Forms.TabPage();
             this.tabPageOriginGraphSleep = new System.Windows.Forms.TabPage();
-            this.tabPageUserData = new System.Windows.Forms.TabPage();
             this.tabPageDayDetail = new System.Windows.Forms.TabPage();
+            this.tabPageUserData = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -207,17 +207,17 @@
             this.tabPageOriginGraphSleep.Name = "tabPageOriginGraphSleep";
             this.tabPageOriginGraphSleep.UseVisualStyleBackColor = true;
             // 
-            // tabPageUserData
-            // 
-            resources.ApplyResources(this.tabPageUserData, "tabPageUserData");
-            this.tabPageUserData.Name = "tabPageUserData";
-            this.tabPageUserData.UseVisualStyleBackColor = true;
-            // 
             // tabPageDayDetail
             // 
             resources.ApplyResources(this.tabPageDayDetail, "tabPageDayDetail");
             this.tabPageDayDetail.Name = "tabPageDayDetail";
             this.tabPageDayDetail.UseVisualStyleBackColor = true;
+            // 
+            // tabPageUserData
+            // 
+            resources.ApplyResources(this.tabPageUserData, "tabPageUserData");
+            this.tabPageUserData.Name = "tabPageUserData";
+            this.tabPageUserData.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

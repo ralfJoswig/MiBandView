@@ -17,7 +17,16 @@ namespace MiBand
 {
     public class MiBandUser
     {
-        public enum Type {UNLOCK = 1003, RECORD = 2001, GOOL = 2002, DAILY_GOOL = 2004, WEEK_SUM = 2006, MONTH_SUM = 2007, STEPS = 3002, ACTIFITY_MIN = 3003, SLEEP = 4001, CONNECTION = 5004 }
+        public enum Type {UNLOCK = 1003, 
+                          RECORD = 2001, 
+                          GOOL = 2002, 
+                          DAILY_GOOL = 2004, 
+                          WEEK_SUM = 2006, 
+                          MONTH_SUM = 2007, 
+                          STEPS = 3002, 
+                          ACTIFITY_MIN = 3003, 
+                          SLEEP = 4001, 
+                          CONNECTION = 5004 }
 
         public UInt32 id { get; set; }
         public DateTime dateTime { get; set; }
@@ -39,25 +48,25 @@ namespace MiBand
             switch (type)
             {
                 case (uint)Type.ACTIFITY_MIN:
-                    return "aktiv";
+                    return Properties.Resources.aktiv;
                 case (uint)Type.STEPS:
-                    return "gehen";
+                    return Properties.Resources.gehen;
                 case (uint)Type.SLEEP:
-                    return "schlafen";
+                    return Properties.Resources.schlafen;
                 case (uint)Type.MONTH_SUM:
-                    return "Monatszusammenfassung";
+                    return Properties.Resources.Monatszusammenfassung;
                 case (uint)Type.RECORD:
-                    return "Rekord";
+                    return Properties.Resources.Rekord;
                 case (uint)Type.WEEK_SUM:
-                    return "Wochenzusammenfassung";
+                    return Properties.Resources.Wochenzusammenfassung;
                 case (uint)Type.UNLOCK:
-                    return "Entsperren";
+                    return Properties.Resources.Entsperren;
                 case (uint)Type.GOOL:
-                    return "Ziel erreicht";
+                    return Properties.Resources.ZielErreicht;
                 case (uint)Type.CONNECTION:
-                    return "Verbindungsinfo";
+                    return Properties.Resources.Verbindungsinfo;
                 case (uint)Type.DAILY_GOOL:
-                    return "Tagesziel";
+                    return Properties.Resources.Tagesziel;
             }
 
             return string.Empty;

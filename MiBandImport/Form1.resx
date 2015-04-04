@@ -559,7 +559,7 @@
     <value>3</value>
   </data>
   <data name="tabPageDayDetail.Text" xml:space="preserve">
-    <value>Tgesdetails</value>
+    <value>Details of Day</value>
   </data>
   <data name="&gt;&gt;tabPageDayDetail.Name" xml:space="preserve">
     <value>tabPageDayDetail</value>

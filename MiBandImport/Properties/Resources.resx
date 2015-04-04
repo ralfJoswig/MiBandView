@@ -132,6 +132,9 @@
   <data name="Berechtigung" xml:space="preserve">
     <value>Permission</value>
   </data>
+  <data name="Beschreibung" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="Datum" xml:space="preserve">
     <value>Date</value>
   </data>
@@ -159,6 +162,12 @@
   <data name="FehlerWorkDirPhone" xml:space="preserve">
     <value>Workdirk on phone not found. Last read data will be viewed.</value>
   </data>
+  <data name="GehenEntfernung" xml:space="preserve">
+    <value>Walk Distance</value>
+  </data>
+  <data name="GehenKalorien" xml:space="preserve">
+    <value>Walk Calories</value>
+  </data>
   <data name="GehenZeit" xml:space="preserve">
     <value>Walk time</value>
   </data>
@@ -171,17 +180,11 @@
   <data name="Info" xml:space="preserve">
     <value>Info</value>
   </data>
-  <data name="Intensiaet" xml:space="preserve">
-    <value>Intensity</value>
-  </data>
   <data name="JsonString" xml:space="preserve">
     <value>Json String</value>
   </data>
   <data name="Kalorien" xml:space="preserve">
     <value>Calories</value>
-  </data>
-  <data name="Kategorie" xml:space="preserve">
-    <value>Category</value>
   </data>
   <data name="LaufenEntfernung" xml:space="preserve">
     <value>Run distance</value>
@@ -200,6 +203,12 @@
   </data>
   <data name="Minuten" xml:space="preserve">
     <value>Minutes</value>
+  </data>
+  <data name="RohdatenAktivität" xml:space="preserve">
+    <value>Raw activity</value>
+  </data>
+  <data name="RohdatenSensorwert" xml:space="preserve">
+    <value>Raw Sensordata</value>
   </data>
   <data name="Schlafdauer" xml:space="preserve">
     <value>Sleep duration</value>

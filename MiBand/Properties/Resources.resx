@@ -117,34 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Activ" xml:space="preserve">
-    <value>aktiv</value>
+  <data name="aktiv" xml:space="preserve">
+    <value>activ</value>
   </data>
-  <data name="ConnectionInfo" xml:space="preserve">
-    <value>Verbindungsinfo</value>
+  <data name="Entsperren" xml:space="preserve">
+    <value>unlock</value>
   </data>
-  <data name="DailyGoal" xml:space="preserve">
-    <value>Tagesziel</value>
+  <data name="gehen" xml:space="preserve">
+    <value>walking</value>
   </data>
-  <data name="Record" xml:space="preserve">
-    <value>Rekord</value>
+  <data name="Idle" xml:space="preserve">
+    <value>Idle</value>
+  </data>
+  <data name="Monatszusammenfassung" xml:space="preserve">
+    <value>Sum of Month</value>
+  </data>
+  <data name="Rekord" xml:space="preserve">
+    <value>Record</value>
+  </data>
+  <data name="Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="schlafen" xml:space="preserve">
+    <value>sleeping</value>
   </data>
   <data name="Sleep" xml:space="preserve">
-    <value>schlafen</value>
+    <value>Sleep</value>
   </data>
-  <data name="SumOfMonth" xml:space="preserve">
-    <value>Monatszusammenfassung</value>
+  <data name="Tagesziel" xml:space="preserve">
+    <value>Tagesziel</value>
   </data>
-  <data name="SumOfWeek" xml:space="preserve">
-    <value>Wochenzusammenfassung</value>
-  </data>
-  <data name="TargetReached" xml:space="preserve">
-    <value>Ziel erreicht</value>
-  </data>
-  <data name="Unlook" xml:space="preserve">
-    <value>Entsperren</value>
+  <data name="Verbindungsinfo" xml:space="preserve">
+    <value>Verbindungsinfo</value>
   </data>
   <data name="Walk" xml:space="preserve">
-    <value>gehen</value>
+    <value>Walk</value>
+  </data>
+  <data name="Wochenzusammenfassung" xml:space="preserve">
+    <value>Sum of Week</value>
+  </data>
+  <data name="ZielErreicht" xml:space="preserve">
+    <value>Ziel erreicht</value>
   </data>
 </root>
