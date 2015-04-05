@@ -32,5 +32,11 @@
     <Setting Name="PhoneTimeOut" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5000</Value>
     </Setting>
+    <Setting Name="Weight" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">93.2</Value>
+    </Setting>
+    <Setting Name="Hight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">183</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

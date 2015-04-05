@@ -128,13 +128,163 @@
   <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelKg.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelKg.Location" type="System.Drawing.Point, System.Drawing">
+    <value>541, 80</value>
+  </data>
+  <data name="labelKg.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 13</value>
+  </data>
+  <data name="labelKg.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="labelKg.Text" xml:space="preserve">
+    <value>kg</value>
+  </data>
+  <data name="&gt;&gt;labelKg.Name" xml:space="preserve">
+    <value>labelKg</value>
+  </data>
+  <data name="&gt;&gt;labelKg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelKg.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;labelKg.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelCm.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelCm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>539, 61</value>
+  </data>
+  <data name="labelCm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 13</value>
+  </data>
+  <data name="labelCm.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="labelCm.Text" xml:space="preserve">
+    <value>cm</value>
+  </data>
+  <data name="&gt;&gt;labelCm.Name" xml:space="preserve">
+    <value>labelCm</value>
+  </data>
+  <data name="&gt;&gt;labelCm.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelCm.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;labelCm.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="textBoxWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>500, 77</value>
+  </data>
+  <data name="textBoxWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 20</value>
+  </data>
+  <data name="textBoxWeight.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;textBoxWeight.Name" xml:space="preserve">
+    <value>textBoxWeight</value>
+  </data>
+  <data name="&gt;&gt;textBoxWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxWeight.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;textBoxWeight.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="textBoxHight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>500, 58</value>
+  </data>
+  <data name="textBoxHight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 20</value>
+  </data>
+  <data name="textBoxHight.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;textBoxHight.Name" xml:space="preserve">
+    <value>textBoxHight</value>
+  </data>
+  <data name="&gt;&gt;textBoxHight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxHight.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;textBoxHight.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelWeight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelWeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>421, 80</value>
+  </data>
+  <data name="labelWeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
+  </data>
+  <data name="labelWeight.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="labelWeight.Text" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="&gt;&gt;labelWeight.Name" xml:space="preserve">
+    <value>labelWeight</value>
+  </data>
+  <data name="&gt;&gt;labelWeight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelWeight.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;labelWeight.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelHight.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelHight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>421, 61</value>
+  </data>
+  <data name="labelHight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 13</value>
+  </data>
+  <data name="labelHight.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="labelHight.Text" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="&gt;&gt;labelHight.Name" xml:space="preserve">
+    <value>labelHight</value>
+  </data>
+  <data name="&gt;&gt;labelHight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelHight.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;labelHight.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="textBoxWorkDirPhone.Location" type="System.Drawing.Point, System.Drawing">
     <value>819, 32</value>
   </data>
   <data name="textBoxWorkDirPhone.Size" type="System.Drawing.Size, System.Drawing">
     <value>298, 20</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="textBoxWorkDirPhone.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
@@ -151,7 +301,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;textBoxWorkDirPhone.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>6</value>
   </data>
   <data name="labelWorkDirPhone.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -178,7 +328,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;labelWorkDirPhone.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>7</value>
   </data>
   <data name="dateTimePickerShowTo.Location" type="System.Drawing.Point, System.Drawing">
     <value>500, 30</value>
@@ -199,7 +349,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;dateTimePickerShowTo.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>8</value>
   </data>
   <data name="dateTimePickerShowFrom.Location" type="System.Drawing.Point, System.Drawing">
     <value>500, 10</value>
@@ -220,7 +370,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;dateTimePickerShowFrom.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>9</value>
   </data>
   <data name="labelShowTo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -247,7 +397,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;labelShowTo.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>10</value>
   </data>
   <data name="labelShowFrom.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -274,7 +424,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;labelShowFrom.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>11</value>
   </data>
   <data name="radioButtonRoot.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -349,7 +499,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>12</value>
   </data>
   <data name="maskedTextBoxSleepDur.Location" type="System.Drawing.Point, System.Drawing">
     <value>819, 10</value>
@@ -376,7 +526,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;maskedTextBoxSleepDur.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>13</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -403,7 +553,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>14</value>
   </data>
   <data name="buttonShowOldData.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 15</value>
@@ -427,7 +577,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;buttonShowOldData.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>15</value>
   </data>
   <data name="buttonRead.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 15</value>
@@ -451,7 +601,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;buttonRead.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>16</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -472,7 +622,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageOriginTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1312, 439</value>
+    <value>1312, 399</value>
   </data>
   <data name="tabPageOriginTab.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -499,7 +649,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageOriginGraphSteps.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1312, 439</value>
+    <value>1312, 399</value>
   </data>
   <data name="tabPageOriginGraphSteps.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -526,7 +676,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageOriginGraphSleep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1312, 439</value>
+    <value>1312, 399</value>
   </data>
   <data name="tabPageOriginGraphSleep.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -553,7 +703,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageDayDetail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1312, 439</value>
+    <value>1312, 399</value>
   </data>
   <data name="tabPageDayDetail.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -580,7 +730,7 @@
     <value>3, 3</value>
   </data>
   <data name="tabControlOriginal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1320, 465</value>
+    <value>1320, 425</value>
   </data>
   <data name="tabControlOriginal.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -604,7 +754,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageOrigin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1326, 471</value>
+    <value>1326, 431</value>
   </data>
   <data name="tabPageOrigin.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -631,7 +781,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPageUserData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1326, 471</value>
+    <value>1326, 431</value>
   </data>
   <data name="tabPageUserData.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -658,7 +808,7 @@
     <value>0, 0</value>
   </data>
   <data name="tabControlMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1334, 497</value>
+    <value>1334, 457</value>
   </data>
   <data name="tabControlMain.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -691,7 +841,7 @@
     <value>1334, 561</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>60</value>
+    <value>100</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>

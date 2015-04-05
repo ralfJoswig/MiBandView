@@ -118,7 +118,7 @@ namespace MiBandImport.DataPanels
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="days"></param>
-        private void OnShowSpanChanged(object sender, EventArgsDaysToDispay days)
+        private void OnShowSpanChanged(object sender, EventArgsDaysToDisplay days)
         {
             // merken welche Tage angezeigt werden sollen
             showFrom = days.DisplayFrom;

@@ -6,6 +6,22 @@
     </header>
     <body>
       <group id="Resx">
+        <trans-unit id="Resx/labelKg.Text" translate="yes" xml:space="preserve">
+          <source>kg</source>
+          <target state="new">kg</target>
+        </trans-unit>
+        <trans-unit id="Resx/labelCm.Text" translate="yes" xml:space="preserve">
+          <source>cm</source>
+          <target state="new">cm</target>
+        </trans-unit>
+        <trans-unit id="Resx/labelWeight.Text" translate="yes" xml:space="preserve">
+          <source>Weight</source>
+          <target state="new">Weight</target>
+        </trans-unit>
+        <trans-unit id="Resx/labelHight.Text" translate="yes" xml:space="preserve">
+          <source>Height</source>
+          <target state="new">Height</target>
+        </trans-unit>
         <trans-unit id="Resx/textBoxWorkDirPhone.Text" translate="no" xml:space="preserve">
           <source>/storage/sdcard1/Backup/MiBand/</source>
           <target state="signed-off">/storage/sdcard1/Backup/MiBand/</target>

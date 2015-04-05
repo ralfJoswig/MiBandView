@@ -26,12 +26,16 @@ namespace MiBandImport
     public partial class Form1 : Form
     {
         public delegate void SleepDurationChangedEventHandler(object sender, EventArgsSleepDurationChanged duration);
-        public delegate void ShowSpanChangedEventHandler(object sender, EventArgsDaysToDispay days);
+        public delegate void ShowSpanChangedEventHandler(object sender, EventArgsDaysToDisplay days);
         public delegate void SelectedDayChangedEventHandler(object sender, EventArgsSelectedDayChanged data);
+        public delegate void PersonalHightChangedEventHandler(object sender, EventArgsPersonalHeight hight);
+        public delegate void PersonalWeightChangedEventHandler(object sender, EventArgsPersonalWeight weight);
 
         public event SleepDurationChangedEventHandler sleepDurationChanged;
         public event ShowSpanChangedEventHandler showSpanChanged;
         public event SelectedDayChangedEventHandler selectectRowChanged;
+        public event PersonalHightChangedEventHandler personalHightChanged;
+        public event PersonalWeightChangedEventHandler personalWeightChanged;
 
         protected static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
@@ -68,6 +72,10 @@ namespace MiBandImport
             radioButtonRoot.Checked = Properties.Settings.Default.Root;
             radioButtonNoRoot.Checked = !Properties.Settings.Default.Root;
             textBoxWorkDirPhone.Text = Properties.Settings.Default.WorkDirOnPhone;
+
+            // persönliche Daten holen
+            textBoxHight.Text = Convert.ToString(Properties.Settings.Default.Hight);
+            textBoxWeight.Text = Convert.ToString(Properties.Settings.Default.Weight);
 
             // Schlafdauer zurückholen
             maskedTextBoxSleepDur.Text = Properties.Settings.Default.SleepDuration;
@@ -414,6 +422,8 @@ namespace MiBandImport
             {
                 miband = new MiBand.MiBand(pathDB);
                 miband.read();
+                miband.weight_in_kg = Convert.ToDouble(textBoxWeight.Text);
+                miband.height_in_cm = Convert.ToDouble(textBoxHight.Text);
             }
             catch (Exception ex)
             {
@@ -486,6 +496,9 @@ namespace MiBandImport
             // Arbeitsverzeichnis auf dem Smartphone
             Properties.Settings.Default.WorkDirOnPhone = textBoxWorkDirPhone.Text;
 
+            // persönliche Daten speichern
+            Properties.Settings.Default.Hight = Convert.ToInt16(textBoxHight.Text);
+            Properties.Settings.Default.Weight = Convert.ToDouble(textBoxWeight.Text);
 
             // Einstellungen speichern
             Properties.Settings.Default.Save();
@@ -529,10 +542,54 @@ namespace MiBandImport
             // Aktuellen Wert an alle verteilen die es wissen wollen
             if (showSpanChanged != null)
             {
-                EventArgsDaysToDispay args = new EventArgsDaysToDispay();
+                EventArgsDaysToDisplay args = new EventArgsDaysToDisplay();
                 args.DisplayFrom = dateTimePickerShowFrom.Value;
                 args.DisplayTo = dateTimePickerShowTo.Value;
                 showSpanChanged(this, args);
+            }
+        }
+
+        /// <summary>
+        /// Eigene Größe wurde geändert
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBoxHeight_TextChanged(object sender, EventArgs e)
+        {
+            // Aktuellen Wert an alle verteilen die es wissen wollen
+            if (personalHightChanged != null)
+            {
+                EventArgsPersonalHeight args = new EventArgsPersonalHeight();
+                args.Height = Convert.ToDouble(textBoxHight.Text);
+                personalHightChanged(this, args);
+            }
+
+            // zusätzlich an das MiBand weiterleiten
+            if (miband != null)
+            {
+                miband.height_in_cm = Convert.ToDouble(textBoxHight.Text);
+            }
+        }
+
+        /// <summary>
+        /// Eigenes Gewicht wurde geändert
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBoxWeight_TextChanged(object sender, EventArgs e)
+        {
+            // Aktuellen Wert an alle verteilen die es wissen wollen
+            if (personalWeightChanged != null)
+            {
+                EventArgsPersonalWeight args = new EventArgsPersonalWeight();
+                args.Weight = Convert.ToDouble(textBoxWeight.Text);
+                personalWeightChanged(this, args);
+            }
+
+            // zusätzlich an das MiBand weiterleiten
+            if (miband != null)
+            {
+                miband.weight_in_kg = Convert.ToDouble(textBoxWeight.Text);
             }
         }
     }

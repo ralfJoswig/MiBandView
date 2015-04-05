@@ -21,6 +21,17 @@ namespace MiBand
 {
     public class MiBand
     {
+        //public delegate void PersonalHightChangedEventHandler(object sender, EventArgsPersonalHeight hight);
+        //public delegate void PersonalWeightChangedEventHandler(object sender, EventArgsPersonalWeight weight);
+
+        //public event PersonalHightChangedEventHandler personalHightChanged;
+        //public event PersonalWeightChangedEventHandler personalWeightChanged;
+
+        public double weight_in_kg { get { return getWeight(); } set { setWeight(value); } }
+        public double height_in_cm { get { return getHeight(); } set { setHeight(value); } }
+
+        private double _weight_in_kg;
+        private double _height_in_cm;
         private string pathToDb = null;
         private string pathOrigin = null;
         private string pathUser = null;
@@ -51,7 +62,7 @@ namespace MiBand
             if (!File.Exists(pathUser))
             {
                 throw new FileNotFoundException("Datenbank unter " + pathUser + " nicht gefunden.");
-            }            
+            }
         }
 
         /// <summary>
@@ -489,6 +500,50 @@ namespace MiBand
             }
 
             return data.Substring(from, to - from + 1);
+        }
+
+        private void setHeight(double value)
+        {
+           _height_in_cm = value;
+
+           MiBandDetail.height_in_cm = _height_in_cm;
+
+            //
+            
+            foreach(MiBandData record in data)
+            {
+                foreach (MiBandDetail detail in record.detail)
+                {
+                    detail.resetMarker();
+                }
+            }
+        }
+
+
+        private void setWeight(double value)
+        {
+            _weight_in_kg = value;
+
+            MiBandDetail.weight_in_kg = _weight_in_kg;
+
+            foreach (MiBandData record in data)
+            {
+                foreach (MiBandDetail detail in record.detail)
+                {
+                    detail.resetMarker();
+                }
+            }
+        }
+
+
+        private double getWeight()
+        {
+            return _weight_in_kg;
+        }
+
+        private double getHeight()
+        {
+            return _height_in_cm;
         }
     }
 }

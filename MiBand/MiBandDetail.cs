@@ -19,12 +19,9 @@ namespace MiBand
 {
     public class MiBandDetail
     {
-
-        // Parameter
-        double weight_in_kg = 93.2;
-        double height_in_cm = 183;
-
-
+        public static double weight_in_kg { get { return getWeight(); } set { setWeight(value); } }
+        public static double height_in_cm { get { return getHeight(); } set { setHeight(value); } }
+        
         public DateTime dateTime { get; set; }
         public int category { get; set; }
         public int intensity { get; set; }
@@ -36,6 +33,8 @@ namespace MiBand
         public string discription { get { return getDescription(); } private set { _description = value; } }
         public double walkCalories { get { return getWalkCalories(); } private set { _walkCalories = value; } }
 
+        private static double _weight_in_kg;
+        private static double _height_in_cm;
         private double _walkDistance;
         private double _walkCalories;
         private int _mode;
@@ -47,6 +46,7 @@ namespace MiBand
         private bool isModeCalculated = false;
         private bool isRunDistanceCalculated = false;
         private bool isWalkDistanceCalculated = false;
+        private bool isWalkCaloriesCalculated = false;
         private string _description = string.Empty;
 
         private static List<double> calList = new List<double>();
@@ -117,7 +117,9 @@ namespace MiBand
             }
             index--;
 
-            _walkCalories = (weight_in_kg * 2.2046 * walkDistance * calList2[index]) / (60 * calList[index]);
+            _walkCalories = (_weight_in_kg * 2.2046 * walkDistance * calList2[index]) / (60 * calList[index]);
+
+            isWalkCaloriesCalculated = true;
 
             return _walkCalories;
         }
@@ -166,7 +168,7 @@ namespace MiBand
                 }
                 else
                 {
-                    double h1 = height_in_cm * 0.42d / 100d;
+                    double h1 = _height_in_cm * 0.42d / 100d;
                     if (steps > 0 &&
                         category != 4 &&
                         category != 5)
@@ -239,6 +241,12 @@ namespace MiBand
                 {
                     getRunDistance();
                 }
+
+                if (!isWalkCaloriesCalculated)
+                {
+                    getWalkCalories();
+                }
+
                 _runCalories = (3d + runs * 2d) / 15d * _walkCalories;
             }
 
@@ -278,6 +286,41 @@ namespace MiBand
                 }
             }
             return _description;
+        }
+
+
+        public void resetMarker()
+        {
+            isModeCalculated = false;
+            isRunDistanceCalculated = false;
+            isWalkDistanceCalculated = false;
+            isWalkCaloriesCalculated = false;
+        }
+
+        private static void setHeight(double value)
+        {
+            _height_in_cm = value;
+
+            //getRunDistance();
+        }
+
+
+        private static void setWeight(double value)
+        {
+            _weight_in_kg = value;
+
+            //getWaldColories();
+        }
+
+
+        private static double getWeight()
+        {
+            return _weight_in_kg;
+        }
+
+        private static double getHeight()
+        {
+            return _height_in_cm;
         }
     }
 }

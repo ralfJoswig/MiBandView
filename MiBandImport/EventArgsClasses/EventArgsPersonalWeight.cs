@@ -15,9 +15,8 @@ using System;
 
 namespace MiBandImport.EventArgsClasses
 {
-    public class EventArgsDaysToDispay
+    public class EventArgsPersonalWeight
     {
-        public DateTime DisplayFrom {get; set;}
-        public DateTime DisplayTo {get; set;}
+        public double Weight {get; set;}
     }
 }

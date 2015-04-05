@@ -142,5 +142,29 @@ namespace MiBandImport.Properties {
                 this["PhoneTimeOut"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("93.2")]
+        public double Weight {
+            get {
+                return ((double)(this["Weight"]));
+            }
+            set {
+                this["Weight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("183")]
+        public int Hight {
+            get {
+                return ((int)(this["Hight"]));
+            }
+            set {
+                this["Hight"] = value;
+            }
+        }
     }
 }

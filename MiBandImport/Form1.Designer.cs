@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.labelKg = new System.Windows.Forms.Label();
+            this.labelCm = new System.Windows.Forms.Label();
+            this.textBoxWeight = new System.Windows.Forms.TextBox();
+            this.textBoxHight = new System.Windows.Forms.TextBox();
+            this.labelWeight = new System.Windows.Forms.Label();
+            this.labelHight = new System.Windows.Forms.Label();
             this.textBoxWorkDirPhone = new System.Windows.Forms.TextBox();
             this.labelWorkDirPhone = new System.Windows.Forms.Label();
             this.dateTimePickerShowTo = new System.Windows.Forms.DateTimePicker();
@@ -69,6 +75,12 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.labelKg);
+            this.splitContainer1.Panel1.Controls.Add(this.labelCm);
+            this.splitContainer1.Panel1.Controls.Add(this.textBoxWeight);
+            this.splitContainer1.Panel1.Controls.Add(this.textBoxHight);
+            this.splitContainer1.Panel1.Controls.Add(this.labelWeight);
+            this.splitContainer1.Panel1.Controls.Add(this.labelHight);
             this.splitContainer1.Panel1.Controls.Add(this.textBoxWorkDirPhone);
             this.splitContainer1.Panel1.Controls.Add(this.labelWorkDirPhone);
             this.splitContainer1.Panel1.Controls.Add(this.dateTimePickerShowTo);
@@ -84,6 +96,38 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControlMain);
+            // 
+            // labelKg
+            // 
+            resources.ApplyResources(this.labelKg, "labelKg");
+            this.labelKg.Name = "labelKg";
+            // 
+            // labelCm
+            // 
+            resources.ApplyResources(this.labelCm, "labelCm");
+            this.labelCm.Name = "labelCm";
+            // 
+            // textBoxWeight
+            // 
+            resources.ApplyResources(this.textBoxWeight, "textBoxWeight");
+            this.textBoxWeight.Name = "textBoxWeight";
+            this.textBoxWeight.TextChanged += new System.EventHandler(this.textBoxWeight_TextChanged);
+            // 
+            // textBoxHight
+            // 
+            resources.ApplyResources(this.textBoxHight, "textBoxHight");
+            this.textBoxHight.Name = "textBoxHight";
+            this.textBoxHight.TextChanged += new System.EventHandler(this.textBoxHeight_TextChanged);
+            // 
+            // labelWeight
+            // 
+            resources.ApplyResources(this.labelWeight, "labelWeight");
+            this.labelWeight.Name = "labelWeight";
+            // 
+            // labelHight
+            // 
+            resources.ApplyResources(this.labelHight, "labelHight");
+            this.labelHight.Name = "labelHight";
             // 
             // textBoxWorkDirPhone
             // 
@@ -264,6 +308,12 @@
         private System.Windows.Forms.TextBox textBoxWorkDirPhone;
         private System.Windows.Forms.Label labelWorkDirPhone;
         private System.Windows.Forms.TabPage tabPageDayDetail;
+        private System.Windows.Forms.TextBox textBoxWeight;
+        private System.Windows.Forms.TextBox textBoxHight;
+        private System.Windows.Forms.Label labelWeight;
+        private System.Windows.Forms.Label labelHight;
+        private System.Windows.Forms.Label labelKg;
+        private System.Windows.Forms.Label labelCm;
     }
 }
 

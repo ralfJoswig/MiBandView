@@ -67,7 +67,9 @@
     <Compile Include="DataPanels\PanelGeneralTab.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="EventArgsClasses\EventArgsDaysToDispay.cs" />
+    <Compile Include="EventArgsClasses\EventArgsPersonalWeight.cs" />
+    <Compile Include="EventArgsClasses\EventArgsPersonalHeight.cs" />
+    <Compile Include="EventArgsClasses\EventArgsDaysToDisplay.cs" />
     <Compile Include="EventArgsClasses\EventArgsSelectedDayChanged.cs" />
     <Compile Include="EventArgsClasses\EventArgsSleepDurationChanged.cs" />
     <Compile Include="Form1.cs">
