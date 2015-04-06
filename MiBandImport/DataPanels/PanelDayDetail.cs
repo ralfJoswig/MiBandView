@@ -21,14 +21,15 @@ using System.Windows.Forms;
 
 namespace MiBandImport.DataPanels
 {
-    public class PanelDayDetail : Panel
+    public class PanelDayDetail : MiBandDataPanel.MiBandPanel
     {
         private DataGridView dataGridView;
+        List<MiBandDetail> detailList;
 
         /// <summary>
-        /// Konstruktor
+        /// Eigene Komponenten initialisieren
         /// </summary>
-        public PanelDayDetail()
+        protected override void initOwnComponents()
         {
             // ist das Datagrid bereits vorhanden
             if (dataGridView == null)
@@ -98,30 +99,24 @@ namespace MiBandImport.DataPanels
                 }
 
                 // Datagrid hinzufügen
-                this.Controls.Add(dataGridView);                
+                this.Controls.Add(dataGridView);
             }
         }
 
         /// <summary>
-        /// Control soll mitbekommen wenn der ausgewählte Tag geändert wird
+        /// Zeigt die Daten an
         /// </summary>
-        public void addListener()
+        protected override void showData()
         {
-            ((Form1)this.TopLevelControl).selectectRowChanged += new Form1.SelectedDayChangedEventHandler(OnDayChanged);
-        }
+            // sind schon Daten vorhanden
+            if (detailList == null ||
+                dataGridView == null)
+            {
+                return;
+            }
 
-        /// <summary>
-        /// Reagiert auf eine geänderte Auswahl des Tages
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="data"></param>
-        private void OnDayChanged(object sender, EventArgsClasses.EventArgsSelectedDayChanged data)
-        {
             // alte Anzeige löschen
             dataGridView.Rows.Clear();
-
-            // Liste mit den Detaildaten holen
-            List<MiBandDetail> detailList = data.data.detail;
 
             // die Zeilen in den Grid einfügen
             foreach (MiBandDetail detail in detailList)
@@ -136,8 +131,57 @@ namespace MiBandImport.DataPanels
                                                     Math.Round(detail.runCalories, 2),
                                                     detail.category,
                                                     detail.intensity});
-                
+
             }
+        }
+
+        /// <summary>
+        /// Festlegen auf welche Änderungen die Tabelle reagieren soll
+        /// </summary>
+        public override void addListener()
+        {
+            ((Form1)this.TopLevelControl).selectectRowChanged += new Form1.SelectedDayChangedEventHandler(OnDayChanged);
+
+            ((Form1)this.TopLevelControl).personalHeightChanged += new Form1.PersonalHeightChangedEventHandler(PersonalHeightChanged);
+
+            ((Form1)this.TopLevelControl).personalWeightChanged += new Form1.PersonalWeightChangedEventHandler(PersonalWeightChanged);
+
+        }
+
+        /// <summary>
+        /// Gewicht wurde verändert
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="weight"></param>
+        private void PersonalWeightChanged(object sender, EventArgsClasses.EventArgsPersonalWeight weight)
+        {
+            // geänderte Daten anzeigen
+            showData();
+        }
+
+        /// <summary>
+        /// Größe wurde verändert
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="hight"></param>
+        private void PersonalHeightChanged(object sender, EventArgsClasses.EventArgsPersonalHeight hight)
+        {
+            // geänderte Daten anzeigen
+            showData();
+        }
+
+        /// <summary>
+        /// Reagiert auf eine geänderte Auswahl des Tages
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="data"></param>
+        private void OnDayChanged(object sender, EventArgsClasses.EventArgsSelectedDayChanged data)
+        {
+            // Liste mit den Detaildaten holen
+            detailList = data.data.detail;
+
+            // und anzeigen
+            showData();
         }
     }
 }

@@ -28,13 +28,13 @@ namespace MiBandImport
         public delegate void SleepDurationChangedEventHandler(object sender, EventArgsSleepDurationChanged duration);
         public delegate void ShowSpanChangedEventHandler(object sender, EventArgsDaysToDisplay days);
         public delegate void SelectedDayChangedEventHandler(object sender, EventArgsSelectedDayChanged data);
-        public delegate void PersonalHightChangedEventHandler(object sender, EventArgsPersonalHeight hight);
+        public delegate void PersonalHeightChangedEventHandler(object sender, EventArgsPersonalHeight hight);
         public delegate void PersonalWeightChangedEventHandler(object sender, EventArgsPersonalWeight weight);
 
         public event SleepDurationChangedEventHandler sleepDurationChanged;
         public event ShowSpanChangedEventHandler showSpanChanged;
         public event SelectedDayChangedEventHandler selectectRowChanged;
-        public event PersonalHightChangedEventHandler personalHightChanged;
+        public event PersonalHeightChangedEventHandler personalHeightChanged;
         public event PersonalWeightChangedEventHandler personalWeightChanged;
 
         protected static readonly ILog log = LogManager.GetLogger(typeof(Program));
@@ -139,7 +139,7 @@ namespace MiBandImport
                 panelGeneralGraphSleep.addListener();
             }
 
-            // Panel hinzufügen
+            // Daten anzeigen
             panelGeneralGraphSleep.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
 
             // Tab mit Tagesdetails
@@ -149,6 +149,9 @@ namespace MiBandImport
                 tabPageDayDetail.Controls.Add(panelDayDetail);
                 panelDayDetail.addListener();
             }
+
+            // Daten anzeigen
+            panelDayDetail.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
         }
 
         /// <summary>
@@ -556,18 +559,18 @@ namespace MiBandImport
         /// <param name="e"></param>
         private void textBoxHeight_TextChanged(object sender, EventArgs e)
         {
-            // Aktuellen Wert an alle verteilen die es wissen wollen
-            if (personalHightChanged != null)
-            {
-                EventArgsPersonalHeight args = new EventArgsPersonalHeight();
-                args.Height = Convert.ToDouble(textBoxHight.Text);
-                personalHightChanged(this, args);
-            }
-
-            // zusätzlich an das MiBand weiterleiten
+            // Änderung an das MiBand weiterleiten
             if (miband != null)
             {
                 miband.height_in_cm = Convert.ToDouble(textBoxHight.Text);
+            }
+
+            // Aktuellen Wert an alle verteilen die es wissen wollen
+            if (personalHeightChanged != null)
+            {
+                EventArgsPersonalHeight args = new EventArgsPersonalHeight();
+                args.Height = Convert.ToDouble(textBoxHight.Text);
+                personalHeightChanged(this, args);
             }
         }
 
@@ -578,18 +581,18 @@ namespace MiBandImport
         /// <param name="e"></param>
         private void textBoxWeight_TextChanged(object sender, EventArgs e)
         {
+            // Änderung an das MiBand weiterleiten
+            if (miband != null)
+            {
+                miband.weight_in_kg = Convert.ToDouble(textBoxWeight.Text);
+            }
+
             // Aktuellen Wert an alle verteilen die es wissen wollen
             if (personalWeightChanged != null)
             {
                 EventArgsPersonalWeight args = new EventArgsPersonalWeight();
                 args.Weight = Convert.ToDouble(textBoxWeight.Text);
                 personalWeightChanged(this, args);
-            }
-
-            // zusätzlich an das MiBand weiterleiten
-            if (miband != null)
-            {
-                miband.weight_in_kg = Convert.ToDouble(textBoxWeight.Text);
             }
         }
     }

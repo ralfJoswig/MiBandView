@@ -21,12 +21,6 @@ namespace MiBand
 {
     public class MiBand
     {
-        //public delegate void PersonalHightChangedEventHandler(object sender, EventArgsPersonalHeight hight);
-        //public delegate void PersonalWeightChangedEventHandler(object sender, EventArgsPersonalWeight weight);
-
-        //public event PersonalHightChangedEventHandler personalHightChanged;
-        //public event PersonalWeightChangedEventHandler personalWeightChanged;
-
         public double weight_in_kg { get { return getWeight(); } set { setWeight(value); } }
         public double height_in_cm { get { return getHeight(); } set { setHeight(value); } }
 

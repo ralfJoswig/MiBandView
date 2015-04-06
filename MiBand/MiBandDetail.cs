@@ -288,7 +288,9 @@ namespace MiBand
             return _description;
         }
 
-
+        /// <summary>
+        /// Alle Merker für berechnete Werte zurücksetzen
+        /// </summary>
         public void resetMarker()
         {
             isModeCalculated = false;
@@ -297,27 +299,37 @@ namespace MiBand
             isWalkCaloriesCalculated = false;
         }
 
+        /// <summary>
+        /// Höhe setzen
+        /// </summary>
+        /// <param name="value"></param>
         private static void setHeight(double value)
         {
             _height_in_cm = value;
-
-            //getRunDistance();
         }
 
-
+        /// <summary>
+        /// setzt das Gewicht
+        /// </summary>
+        /// <param name="value"></param>
         private static void setWeight(double value)
         {
             _weight_in_kg = value;
-
-            //getWaldColories();
         }
 
-
+        /// <summary>
+        /// Gibt die Größe zurück
+        /// </summary>
+        /// <returns></returns>
         private static double getWeight()
         {
             return _weight_in_kg;
         }
 
+        /// <summary>
+        /// Gibt das Gewicht zurück
+        /// </summary>
+        /// <returns></returns>
         private static double getHeight()
         {
             return _height_in_cm;
