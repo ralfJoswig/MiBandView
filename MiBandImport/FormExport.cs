@@ -72,9 +72,32 @@ namespace MiBandImport
         /// <param name="e"></param>
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            miband.export(textBoxSperator.Text, textBoxFilename.Text, comboBoxData.SelectedIndex, checkBoxHeaderline.Checked);
+            // Export ausführen
+            var meldung = miband.export(textBoxSperator.Text, textBoxFilename.Text, comboBoxData.SelectedIndex, checkBoxHeaderline.Checked);
 
-            Close();
+            // gab es beim Export eine Meldung
+            if (meldung == null)
+            {
+                // nein, dann war alles i.O.
+                MessageBox.Show("Daten erfolgreich exportiert",
+                                "Export erfolgreich",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Information);
+
+                // Fenster schließen
+                Close();
+            }
+            else
+            {
+                // es gabe eine Meldung, dann ab ins Log
+                log.Info("Export meldet: " + meldung);
+
+                // und Meldung ausgeben
+                MessageBox.Show(meldung,
+                                "Beim Export trat eine Meldung auf",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Information);
+            }
         }
     }
 }

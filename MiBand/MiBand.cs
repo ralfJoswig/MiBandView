@@ -673,50 +673,97 @@ namespace MiBand
                 string output = string.Concat(miData.date.ToShortDateString(),
                                               seperator,
                                               miData.lightSleepMin,
-                                              seperator);
-                output = string.Concat(output,
-                                       miData.deepSleepMin,
-                                       seperator,
-                                       miData.awakeMin);
-                output = string.Concat(output,
-                                       seperator,
-                                       miData.runTimeMin,
-                                       seperator);
-                output = string.Concat(output,
-                                       miData.runDistanceMeter,
-                                       seperator,
-                                       miData.runBurnCalories);
-                output = string.Concat(output,
-                                       seperator,
-                                       miData.walkTimeMin,
-                                       seperator);
-                output = string.Concat(output,
-                                       miData.dailySteps,
-                                       seperator,
-                                       miData.dailyDistanceMeter);
-                output = string.Concat(output,
-                                       seperator,
-                                       miData.dailyBurnCalories,
-                                       seperator);
-                output = string.Concat(output,
-                                       miData.dailyGoal,
-                                       seperator,
-                                       sleepStartTime);
-                output = string.Concat(output,
-                                       seperator,
-                                       sleepEndTime,
-                                       seperator);
-                output = string.Concat(output,
-                                       sleepDuration);
+                                              seperator,
+                                              miData.deepSleepMin,
+                                              seperator,
+                                              miData.awakeMin,
+                                              seperator,
+                                              miData.runTimeMin,
+                                              seperator,
+                                              miData.runDistanceMeter,
+                                              seperator,
+                                              miData.runBurnCalories,
+                                              seperator,
+                                              miData.walkTimeMin,
+                                              seperator,
+                                              miData.dailySteps,
+                                              seperator,
+                                              miData.dailyDistanceMeter,
+                                              seperator,
+                                              miData.dailyBurnCalories,
+                                              seperator,
+                                              miData.dailyGoal,
+                                              seperator,
+                                              sleepStartTime,
+                                              seperator,
+                                              sleepEndTime,
+                                              seperator, 
+                                              sleepDuration);
 
                 // Daten ausgeben
                 sw.WriteLine(output);
             }
         }
 
+        /// <summary>
+        /// Speichert die Detaildaten
+        /// </summary>
+        /// <param name="sw"></param>
+        /// <param name="seperator"></param>
+        /// <param name="withHeaderline"></param>
         private void exportRawData(StreamWriter sw, string seperator, bool withHeaderline)
         {
-            throw new NotImplementedException();
+            // wenn gewünscht die Kopfzeile ausgeben
+            if (withHeaderline)
+            {
+                string output = "date" +
+                                seperator +
+                                "description" +
+                                seperator +
+                                "walkDistance" +
+                                seperator +
+                                "steps" +
+                                seperator +
+                                "walkCalories" +
+                                seperator +
+                                "runDistance" +
+                                seperator +
+                                "runCalories" +
+                                seperator +
+                                "rawActivity" +
+                                seperator +
+                                "rawSensorData";
+                sw.WriteLine(output);
+            }
+
+            // alle Datensätze bearbeiten
+            foreach (MiBandData record in data)
+            {
+                // Einzeldaten durchlaufen
+                foreach (MiBandDetail detail in record.detail)
+                {
+                    // Zeile hinzufügen
+                    string output = string.Concat(detail.dateTime.ToString(),
+                                                  seperator,
+                                                  detail.discription,
+                                                  seperator,
+                                                  detail.steps,
+                                                  seperator,
+                                                  Math.Round(detail.walkDistance, 2),
+                                                  seperator,
+                                                  Math.Round(detail.runDistance, 2),
+                                                  seperator,
+                                                  Math.Round(detail.walkCalories, 2),
+                                                  seperator,
+                                                  Math.Round(detail.runCalories, 2),
+                                                  seperator,
+                                                  detail.category,
+                                                  seperator,
+                                                  detail.intensity);
+                    // Daten ausgeben
+                    sw.WriteLine(output);
+                }
+            }
         }
     }
 }
