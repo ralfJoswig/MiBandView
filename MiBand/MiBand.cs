@@ -29,6 +29,7 @@ namespace MiBand
         private string pathToDb = null;
         private string pathOrigin = null;
         private string pathUser = null;
+        private DateTime initDateTime = new DateTime(0);
 
         protected static SQLiteConnection connection = null;
         private List<MiBandRawData> rawData = new List<MiBandRawData>();
@@ -105,13 +106,13 @@ namespace MiBand
             while (reader.Read())
             {
                 var raw = new MiBandRawUser();
-                
+
                 raw.id = readUIntFromDB(reader, "_id");
                 raw.date = readDateTimeFromDB(reader, "DATE");
                 raw.time = readDateTimeFromDB(reader, "TIME");
                 raw.type = readTextAsUIntFromDB(reader, "TYPE");
                 raw.right = readStringFromDB(reader, "RIGHT");
-                raw.index = readStringFromDB(reader,"INDEX");
+                raw.index = readStringFromDB(reader, "INDEX");
                 raw.json_string = readStringFromDB(reader, "JSON_STRING");
                 raw.script_version = readStringFromDB(reader, "SCRIPT_VERSION");
                 raw.lua_action_script = readStringFromDB(reader, "LUA_ACTION_SCRIPT");
@@ -120,7 +121,7 @@ namespace MiBand
                 raw.start = readTextAsUIntFromDB(reader, "START");
                 raw.stop = readTextAsUIntFromDB(reader, "STOP");
                 raw.expire_time = readDateTimeFromDB(reader, "EXPIRE_TIME");
-                
+
                 // Datensatz merken
                 rawUser.Add(raw);
             }
@@ -219,7 +220,7 @@ namespace MiBand
                     // Wert lesen
                     return reader.GetDateTime(index);
                 }
-                
+
             }
         }
 
@@ -389,7 +390,7 @@ namespace MiBand
             }
 
             // Rohdatensätze für Benutzer umsetzen
-            foreach(MiBandRawUser raw in rawUser)
+            foreach (MiBandRawUser raw in rawUser)
             {
                 var data = new MiBandUser();
 
@@ -496,30 +497,18 @@ namespace MiBand
             return data.Substring(from, to - from + 1);
         }
 
+        /// <summary>
+        /// Setzt die Größe
+        /// </summary>
+        /// <param name="value"></param>
         private void setHeight(double value)
         {
-           _height_in_cm = value;
+            _height_in_cm = value;
 
-           MiBandDetail.height_in_cm = _height_in_cm;
+            MiBandDetail.height_in_cm = _height_in_cm;
 
-            //
-            
-            foreach(MiBandData record in data)
-            {
-                foreach (MiBandDetail detail in record.detail)
-                {
-                    detail.resetMarker();
-                }
-            }
-        }
-
-
-        private void setWeight(double value)
-        {
-            _weight_in_kg = value;
-
-            MiBandDetail.weight_in_kg = _weight_in_kg;
-
+            // da die Größe geändert wurde, in allen Datensätzen die Berechnung der
+            // abhängigen Werte zurücksetzen
             foreach (MiBandData record in data)
             {
                 foreach (MiBandDetail detail in record.detail)
@@ -529,15 +518,205 @@ namespace MiBand
             }
         }
 
+        /// <summary>
+        /// Setzt das Gewicht
+        /// </summary>
+        /// <param name="value"></param>
+        private void setWeight(double value)
+        {
+            _weight_in_kg = value;
 
+            MiBandDetail.weight_in_kg = _weight_in_kg;
+
+            // da die Größe geändert wurde, in allen Datensätzen die Berechnung der
+            // abhängigen Werte zurücksetzen
+            foreach (MiBandData record in data)
+            {
+                foreach (MiBandDetail detail in record.detail)
+                {
+                    detail.resetMarker();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gibt das Gewicht zurück
+        /// </summary>
+        /// <returns></returns>
         private double getWeight()
         {
             return _weight_in_kg;
         }
 
+        /// <summary>
+        /// Gibt die Größe zurück
+        /// </summary>
+        /// <returns></returns>
         private double getHeight()
         {
             return _height_in_cm;
+        }
+
+        /// <summary>
+        /// Speichert die Daten in einer Datei
+        /// </summary>
+        /// <param name="seperator"></param>
+        /// <param name="filename"></param>
+        /// <param name="datapart"></param>
+        /// <param name="withHeaderline"></param>
+        /// <returns></returns>
+        public string export(string seperator, string filename, int datapart, bool withHeaderline)
+        {
+            // Datei zur Ausgabe öffnen
+            FileStream file = new FileStream(filename, FileMode.Create);
+            try
+            {
+                // Ausgabe vorbereiten
+                using (StreamWriter sw = new StreamWriter(file, System.Text.Encoding.Default))
+                {
+                    // verschiedene Ausgaben durchführen
+                    switch (datapart)
+                    {
+                        case 0:
+                            // Tagesübersicht
+                            exportDailyOverview(sw, seperator, withHeaderline);
+                            break;
+                        case 1:
+                            // Rohdaten
+                            exportRawData(sw, seperator, withHeaderline);
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // fehlerhafte Datei löschen
+                File.Delete(filename);
+
+                // Fehler zurückmelden
+                return ex.Message;
+            }
+
+            //Datei schließen
+            file.Close();
+
+            // korrektes Speichern zurückmelden
+            return null;
+        }
+
+        /// <summary>
+        /// Speichert die Tagesübersicht
+        /// </summary>
+        /// <param name="sw"></param>
+        /// <param name="seperator"></param>
+        /// <param name="withHeaderline"></param>
+        private void exportDailyOverview(StreamWriter sw, string seperator, bool withHeaderline)
+        {
+            // wenn gewünscht die Kopfzeile ausgeben
+            if (withHeaderline)
+            {
+                string output = "Date" +
+                                seperator +
+                                "Light sleeping" +
+                                seperator +
+                                "Deep sleep" +
+                                seperator +
+                                "wake" +
+                                seperator +
+                                "Run-time" +
+                                seperator +
+                                "Run distance" +
+                                seperator +
+                                "Running calories" +
+                                seperator +
+                                "Walk time" +
+                                seperator +
+                                "Steps" +
+                                seperator +
+                                "Distance" +
+                                seperator +
+                                "Calories" +
+                                seperator +
+                                "Goal steps" +
+                                seperator +
+                                "Sleep time" +
+                                seperator +
+                                "Wake-up time" +
+                                seperator +
+                                "Sleep duration";
+                sw.WriteLine(output);
+            }
+
+            // alle Datensätze bearbeiten
+            foreach (MiBandData miData in data)
+            {
+                // wenn kein Schlafstart,-ende oder -dauer gesetzt ist auch keine anzeigen
+                string sleepStartTime = string.Empty;
+                if (miData.sleepStartTime.CompareTo(initDateTime) != 0)
+                {
+                    sleepStartTime = miData.sleepStartTime.ToShortTimeString();
+                }
+
+                string sleepEndTime = string.Empty;
+                if (miData.sleepEndTime.CompareTo(initDateTime) != 0)
+                {
+                    sleepEndTime = miData.sleepEndTime.ToShortTimeString();
+                }
+
+                string sleepDuration = string.Empty;
+                if (miData.sleepEndTime.CompareTo(initDateTime) != 0)
+                {
+                    sleepDuration = miData.sleepDuration.ToString();
+                }
+
+                // Zeile zusammenfügen
+                string output = string.Concat(miData.date.ToShortDateString(),
+                                              seperator,
+                                              miData.lightSleepMin,
+                                              seperator);
+                output = string.Concat(output,
+                                       miData.deepSleepMin,
+                                       seperator,
+                                       miData.awakeMin);
+                output = string.Concat(output,
+                                       seperator,
+                                       miData.runTimeMin,
+                                       seperator);
+                output = string.Concat(output,
+                                       miData.runDistanceMeter,
+                                       seperator,
+                                       miData.runBurnCalories);
+                output = string.Concat(output,
+                                       seperator,
+                                       miData.walkTimeMin,
+                                       seperator);
+                output = string.Concat(output,
+                                       miData.dailySteps,
+                                       seperator,
+                                       miData.dailyDistanceMeter);
+                output = string.Concat(output,
+                                       seperator,
+                                       miData.dailyBurnCalories,
+                                       seperator);
+                output = string.Concat(output,
+                                       miData.dailyGoal,
+                                       seperator,
+                                       sleepStartTime);
+                output = string.Concat(output,
+                                       seperator,
+                                       sleepEndTime,
+                                       seperator);
+                output = string.Concat(output,
+                                       sleepDuration);
+
+                // Daten ausgeben
+                sw.WriteLine(output);
+            }
+        }
+
+        private void exportRawData(StreamWriter sw, string seperator, bool withHeaderline)
+        {
+            throw new NotImplementedException();
         }
     }
 }

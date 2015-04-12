@@ -141,6 +141,9 @@
   <data name="DatumUhrzeit" xml:space="preserve">
     <value>Date / time</value>
   </data>
+  <data name="DbNotRead" xml:space="preserve">
+    <value>Data could not be read from Smartphone</value>
+  </data>
   <data name="Einschlafzeit" xml:space="preserve">
     <value>Sleep time</value>
   </data>
@@ -204,6 +207,9 @@
   <data name="Minuten" xml:space="preserve">
     <value>Minutes</value>
   </data>
+  <data name="RawData" xml:space="preserve">
+    <value>Raw-Data</value>
+  </data>
   <data name="RohdatenAktivität" xml:space="preserve">
     <value>Raw activity</value>
   </data>
@@ -224,6 +230,9 @@
   </data>
   <data name="Taetigkeit" xml:space="preserve">
     <value>Activity</value>
+  </data>
+  <data name="Tagesuebersicht" xml:space="preserve">
+    <value>Daily overview</value>
   </data>
   <data name="Tiefschlaf" xml:space="preserve">
     <value>Deep sleep</value>

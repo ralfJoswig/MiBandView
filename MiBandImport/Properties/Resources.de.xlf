@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en" target-language="de" original="Resources.resx" tool-id="MultilingualAppToolkit" product-name="MiBandImport" product-version="0.1.0.0" build-num="0">
+  <file datatype="xml" source-language="en" target-language="de" original="Resources.resx" tool-id="MultilingualAppToolkit" product-name="MiBandImport" product-version="0.3.0.0" build-num="0">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="3.1.1250.0" tool-company="Microsoft" />
     </header>
@@ -24,6 +24,10 @@
         <trans-unit id="Resx/Taetigkeit" translate="yes" xml:space="preserve">
           <source>Activity</source>
           <target state="signed-off">Tätigkeit</target></trans-unit>
+        <trans-unit id="Resx/Tagesuebersicht" translate="yes" xml:space="preserve">
+          <source>Daily overview</source>
+          <target state="signed-off">Tagesübersicht</target>
+        </trans-unit>
         <trans-unit id="Resx/Start" translate="yes" xml:space="preserve">
           <source>Start</source>
           <target state="signed-off">Start</target>
@@ -41,6 +45,10 @@
         <trans-unit id="Resx/Minuten" translate="yes" xml:space="preserve">
           <source>Minutes</source>
           <target state="signed-off">Minuten</target></trans-unit>
+        <trans-unit id="Resx/RawData" translate="yes" xml:space="preserve">
+          <source>Raw-Data</source>
+          <target state="signed-off">Rohdaten</target>
+        </trans-unit>
         <trans-unit id="Resx/RohdatenSensorwert" translate="yes" xml:space="preserve">
           <source>Raw Sensordata</source>
           <target state="signed-off">Rohdaten Sensorwert</target></trans-unit>
@@ -117,6 +125,10 @@
         <trans-unit id="Resx/DatumUhrzeit" translate="yes" xml:space="preserve">
           <source>Date / time</source>
           <target state="signed-off">Datum / Uhrzeit</target></trans-unit>
+        <trans-unit id="Resx/DbNotRead" translate="yes" xml:space="preserve">
+          <source>Data could not be read from Smartphone</source>
+          <target state="signed-off">Daten konnten von Smartphone nicht gelesen werden</target>
+        </trans-unit>
         <trans-unit id="Resx/Datum" translate="yes" xml:space="preserve">
           <source>Date</source>
           <target state="signed-off">Datum</target></trans-unit>

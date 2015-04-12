@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.buttonExport = new System.Windows.Forms.Button();
             this.labelKg = new System.Windows.Forms.Label();
             this.labelCm = new System.Windows.Forms.Label();
             this.textBoxWeight = new System.Windows.Forms.TextBox();
@@ -57,6 +58,7 @@
             this.tabPageOriginGraphSleep = new System.Windows.Forms.TabPage();
             this.tabPageDayDetail = new System.Windows.Forms.TabPage();
             this.tabPageUserData = new System.Windows.Forms.TabPage();
+            this.tabPageStat = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -75,6 +77,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.buttonExport);
             this.splitContainer1.Panel1.Controls.Add(this.labelKg);
             this.splitContainer1.Panel1.Controls.Add(this.labelCm);
             this.splitContainer1.Panel1.Controls.Add(this.textBoxWeight);
@@ -96,6 +99,13 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControlMain);
+            // 
+            // buttonExport
+            // 
+            resources.ApplyResources(this.buttonExport, "buttonExport");
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.UseVisualStyleBackColor = true;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
             // 
             // labelKg
             // 
@@ -212,6 +222,7 @@
             // 
             this.tabControlMain.Controls.Add(this.tabPageOrigin);
             this.tabControlMain.Controls.Add(this.tabPageUserData);
+            this.tabControlMain.Controls.Add(this.tabPageStat);
             resources.ApplyResources(this.tabControlMain, "tabControlMain");
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
@@ -262,6 +273,12 @@
             resources.ApplyResources(this.tabPageUserData, "tabPageUserData");
             this.tabPageUserData.Name = "tabPageUserData";
             this.tabPageUserData.UseVisualStyleBackColor = true;
+            // 
+            // tabPageStat
+            // 
+            resources.ApplyResources(this.tabPageStat, "tabPageStat");
+            this.tabPageStat.Name = "tabPageStat";
+            this.tabPageStat.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -314,6 +331,8 @@
         private System.Windows.Forms.Label labelHight;
         private System.Windows.Forms.Label labelKg;
         private System.Windows.Forms.Label labelCm;
+        private System.Windows.Forms.TabPage tabPageStat;
+        private System.Windows.Forms.Button buttonExport;
     }
 }
 

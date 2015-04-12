@@ -46,6 +46,7 @@ namespace MiBandImport
         private PanelGeneralGraphSteps panelGeneralGraphSteps;
         private PanelGeneralGraphSleep panelGeneralGraphSleep;
         private PanelDayDetail panelDayDetail;
+        private PanelStatistics panelStatistics;
 
         private string pathDBshort = ".\\db\\";
         private string pathDB = Application.StartupPath + "\\db\\";
@@ -152,6 +153,17 @@ namespace MiBandImport
 
             // Daten anzeigen
             panelDayDetail.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
+
+            // Tab mit Statistiken
+            if (panelStatistics == null)
+            {
+                panelStatistics = new PanelStatistics();
+                tabPageStat.Controls.Add(panelStatistics);
+                panelStatistics.addListener();
+            }
+
+            // Daten anzeigen
+            //panelStatistics.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
         }
 
         /// <summary>
@@ -181,6 +193,14 @@ namespace MiBandImport
             {
                 // Rohdaten konnten gelesen werden, dann für Anzeige konvertieren
                 readData();
+            }
+            else
+            {
+                // Datenbank konnte nicht gelesen werden
+                MessageBox.Show(Properties.Resources.DbNotRead,
+                                Properties.Resources.FehlerMsg,
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
 
@@ -215,7 +235,13 @@ namespace MiBandImport
                                                    MessageBoxIcon.Information))
             {
                 // Backup auf Smartphone erstellen und auf PC ablegen
-                adbCommand("backup -f " + pathDB + "mi.ab -noapk -noshared com.xiaomi.hm.health");
+                if (!adbCommand("backup -f " + pathDB + "mi.ab -noapk -noshared com.xiaomi.hm.health", 30000))
+                {
+                    // Backup konnte nicht ausgeführt werden
+                    log.Error("Fehler beim Durchführen Backup der App");
+                    return false;
+                }
+
                 performCMD(pathLib + "tail -c +25 " + pathDB + "mi.ab > " + pathDB + "mi.zlb");
 
                 // Datenbanken extrahieren
@@ -227,10 +253,21 @@ namespace MiBandImport
                 performCMD("copy /Y apps\\com.xiaomi.hm.health\\db\\* db\\.");
 
                 // aufräumen
-                Directory.Delete(Application.StartupPath + "\\apps", true);
-                File.Delete(pathDB + "mi.ab");
-                File.Delete(pathDB + "mi.zlb");
-                File.Delete(pathDB + "mi.tar");
+                try
+                {
+                    Directory.Delete(Application.StartupPath + "\\apps", true);
+                    File.Delete(pathDB + "mi.ab");
+                    File.Delete(pathDB + "mi.zlb");
+                    File.Delete(pathDB + "mi.tar");
+                }
+                catch(FileNotFoundException e1)
+                {
+                    log.Debug(e1.Message);
+                }
+                catch(DirectoryNotFoundException e2)
+                {
+                    log.Debug(e2.Message);
+                }
 
                 return true;
             }
@@ -246,7 +283,7 @@ namespace MiBandImport
         /// <param name="cmd"></param>
         /// <param name="showError"></param>
         /// <param name="showOutput"></param>
-        private bool performCMD(string cmd, bool showError = false, bool showOutput = false, int timeout = 99999)
+        private bool performCMD(string cmd, bool showError = false, bool showOutput = false, int timeout = 999999)
         {
             log.Debug("Kommando wird ausgeführt: " + cmd);
 
@@ -271,10 +308,13 @@ namespace MiBandImport
                 try
                 {
                     // auf Beenden des Kommandos warten
+                    log.Debug("Prozess wird gestartet, Timeout in ms " + timeout);
                     process.WaitForExit(timeout);
+                    log.Debug("Prozess wurde beendet");
 
                     if (!process.HasExited)
                     {
+                        log.Error("Prozess wurde NICHT korrekt beendet");
                         return false;
                     }
 
@@ -315,7 +355,7 @@ namespace MiBandImport
                         // Wenn was ermittelt wurde und auch ausgegeben werden soll
                         if (error.Length > 0)
                         {
-                            log.Debug("Fehler Kommando : " + error);
+                            log.Error("Fehler Kommando : " + error);
 
                             if (showError)
                             {
@@ -453,6 +493,9 @@ namespace MiBandImport
 
             // wenn nötig Panles für Daten initialisieren
             initDataPanles();
+
+            // Daten wurden gelesen, dann Drucktaste für Export aktivieren
+            buttonExport.Enabled = true;
         }
 
         /// <summary>
@@ -594,6 +637,16 @@ namespace MiBandImport
                 args.Weight = Convert.ToDouble(textBoxWeight.Text);
                 personalWeightChanged(this, args);
             }
+        }
+
+        /// <summary>
+        /// Daten sollen exportiert werden, Fenster anzeigen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            new FormExport(miband).ShowDialog();
         }
     }
 }

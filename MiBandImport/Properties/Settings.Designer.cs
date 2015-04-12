@@ -121,7 +121,7 @@ namespace MiBandImport.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/storage/sdcard1/Backup/MiBand/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/storage/sdcard1/")]
         public string WorkDirOnPhone {
             get {
                 return ((string)(this["WorkDirOnPhone"]));
@@ -145,7 +145,7 @@ namespace MiBandImport.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("93.2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("85")]
         public double Weight {
             get {
                 return ((double)(this["Weight"]));
@@ -157,7 +157,7 @@ namespace MiBandImport.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("183")]
+        [global::System.Configuration.DefaultSettingValueAttribute("180")]
         public int Hight {
             get {
                 return ((int)(this["Hight"]));

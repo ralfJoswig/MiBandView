@@ -1,26 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="en" target-language="de" original="Form1.resx" tool-id="MultilingualAppToolkit" product-name="MiBandImport" product-version="0.1.0.0" build-num="0">
+  <file datatype="xml" source-language="en" target-language="de" original="Form1.resx" tool-id="MultilingualAppToolkit" product-name="MiBandImport" product-version="0.3.0.0" build-num="0">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="3.1.1250.0" tool-company="Microsoft" />
     </header>
     <body>
       <group id="Resx">
+        <trans-unit id="Resx/buttonExport.Text" translate="yes" xml:space="preserve">
+          <source>Export Data</source>
+          <target state="signed-off">Daten exportieren</target>
+        </trans-unit>
         <trans-unit id="Resx/labelKg.Text" translate="yes" xml:space="preserve">
           <source>kg</source>
-          <target state="new">kg</target>
+          <target state="signed-off">kg</target>
         </trans-unit>
         <trans-unit id="Resx/labelCm.Text" translate="yes" xml:space="preserve">
           <source>cm</source>
-          <target state="new">cm</target>
+          <target state="signed-off">cm</target>
         </trans-unit>
         <trans-unit id="Resx/labelWeight.Text" translate="yes" xml:space="preserve">
           <source>Weight</source>
-          <target state="new">Weight</target>
+          <target state="signed-off">Gewicht</target>
         </trans-unit>
         <trans-unit id="Resx/labelHight.Text" translate="yes" xml:space="preserve">
           <source>Height</source>
-          <target state="new">Height</target>
+          <target state="signed-off">Größe</target>
         </trans-unit>
         <trans-unit id="Resx/textBoxWorkDirPhone.Text" translate="no" xml:space="preserve">
           <source>/storage/sdcard1/Backup/MiBand/</source>
@@ -60,8 +64,8 @@
 		  <source>View last data</source>
 		  <target state="signed-off">letzte Daten anzeigen</target></trans-unit>
         <trans-unit id="Resx/tabPageOriginTab.Text" translate="yes" xml:space="preserve">
-		  <source>Table</source>
-		  <target state="signed-off">Tabelle</target></trans-unit>
+		  <source>Daily overview</source>
+		  <target state="signed-off">Tagesübersicht</target></trans-unit>
         <trans-unit id="Resx/tabPageOriginGraphSteps.Text" translate="yes" xml:space="preserve">
 		  <source>Graphic steps</source>
 		  <target state="signed-off">Grafik Schritte</target></trans-unit>
@@ -77,6 +81,10 @@
         <trans-unit id="Resx/tabPageUserData.Text" translate="yes" xml:space="preserve">
 		  <source>Info</source>
 		  <target state="signed-off">Info</target></trans-unit>
+        <trans-unit id="Resx/tabPageStat.Text" translate="yes" xml:space="preserve">
+          <source>Statistics</source>
+          <target state="signed-off">Statistik</target>
+        </trans-unit>
         <trans-unit id="Resx/$this.Text" translate="no" xml:space="preserve">
 		  <source>MiBandView</source>
 		  <target state="signed-off">MiBandView</target></trans-unit>

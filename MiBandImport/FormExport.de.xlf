@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en" target-language="de" original="FormExport.resx" tool-id="MultilingualAppToolkit" product-name="MiBandImport" product-version="0.3.0.0" build-num="0">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="3.1.1250.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="Resx">
+        <trans-unit id="Resx/buttonStart.Text" translate="yes" xml:space="preserve">
+          <source>Start Export</source>
+          <target state="signed-off">Export starten</target>
+        </trans-unit>
+        <trans-unit id="Resx/buttonCancel.Text" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="signed-off">Abbrechen</target>
+        </trans-unit>
+        <trans-unit id="Resx/labelSeperator.Text" translate="yes" xml:space="preserve">
+          <source>Sperator</source>
+          <target state="signed-off">Trennzeichen</target>
+        </trans-unit>
+        <trans-unit id="Resx/textBoxSperator.Text" translate="no" xml:space="preserve">
+          <source>;</source>
+          <target state="signed-off">;</target>
+        </trans-unit>
+        <trans-unit id="Resx/checkBoxHeaderline.Text" translate="yes" xml:space="preserve">
+          <source>with Headerline</source>
+          <target state="signed-off">mit Kopfzeile</target>
+        </trans-unit>
+        <trans-unit id="Resx/labelFilename.Text" translate="yes" xml:space="preserve">
+          <source>full Filename</source>
+          <target state="signed-off">Dateiname mit Pfad</target>
+        </trans-unit>
+        <trans-unit id="Resx/buttonBrowse.Text" translate="yes" xml:space="preserve">
+          <source>Browse</source>
+          <target state="signed-off">Durchsuchen</target>
+        </trans-unit>
+        <trans-unit id="Resx/saveFileDialog.Filter" translate="no" xml:space="preserve">
+          <source>CSV|*.csv|All Files|*.*</source>
+          <target state="signed-off">CSV|*.csv|All Files|*.*</target>
+        </trans-unit>
+        <trans-unit id="Resx/saveFileDialog.Title" translate="yes" xml:space="preserve">
+          <source>Save Filename</source>
+          <target state="signed-off">Datei speichern unter</target>
+        </trans-unit>
+        <trans-unit id="Resx/labelExportData.Text" translate="yes" xml:space="preserve">
+          <source>Data to export</source>
+          <target state="signed-off">Daten die expotiert werden sollen</target>
+        </trans-unit>
+        <trans-unit id="Resx/$this.Text" translate="yes" xml:space="preserve">
+          <source>Export Data</source>
+          <target state="signed-off">Daten exportieren</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

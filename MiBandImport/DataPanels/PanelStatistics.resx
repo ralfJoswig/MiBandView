@@ -117,133 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Ablaufzeit" xml:space="preserve">
-    <value>Ablaufzeit</value>
-  </data>
-  <data name="ZielSchritte" xml:space="preserve">
-    <value>Ziel Schritte</value>
-  </data>
-  <data name="Wach" xml:space="preserve">
-    <value>wach</value>
-  </data>
-  <data name="Typ" xml:space="preserve">
-    <value>Typ</value>
-  </data>
-  <data name="Tiefschlaf" xml:space="preserve">
-    <value>Tiefschlaf</value>
-  </data>
-  <data name="Taetigkeit" xml:space="preserve">
-    <value>Tätigkeit</value>
-  </data>
-  <data name="Start" xml:space="preserve">
-    <value>Start</value>
-  </data>
-  <data name="ScriptVersion" xml:space="preserve">
-    <value>Script Version</value>
-  </data>
-  <data name="Schritte" xml:space="preserve">
-    <value>Schritte</value>
-  </data>
-  <data name="Schlafdauer" xml:space="preserve">
-    <value>Schlafdauer</value>
-  </data>
-  <data name="Minuten" xml:space="preserve">
-    <value>Minuten</value>
-  </data>
-  <data name="LuaScript" xml:space="preserve">
-    <value>LUA Script</value>
-  </data>
-  <data name="LeichtenSchlaf" xml:space="preserve">
-    <value>leichten Schlaf</value>
-  </data>
-  <data name="Laufzeit" xml:space="preserve">
-    <value>Laufzeit</value>
-  </data>
-  <data name="LaufenKalorien" xml:space="preserve">
-    <value>Laufen Kalorien</value>
-  </data>
-  <data name="LaufenEntfernung" xml:space="preserve">
-    <value>Laufen Entfernung</value>
-  </data>
-  <data name="Kalorien" xml:space="preserve">
-    <value>Kalorien</value>
-  </data>
-  <data name="JsonString" xml:space="preserve">
-    <value>Json String</value>
-  </data>
-  <data name="Info" xml:space="preserve">
-    <value>Info</value>
-  </data>
-  <data name="Index" xml:space="preserve">
-    <value>Index</value>
-  </data>
-  <data name="ID" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="GehenZeit" xml:space="preserve">
-    <value>Gehen Zeit</value>
-  </data>
-  <data name="FehlerMsg" xml:space="preserve">
-    <value>Es trat folgender Fehler auf</value>
-  </data>
-  <data name="ErgebnisAktion" xml:space="preserve">
-    <value>Ergebnis der Aktion</value>
-  </data>
-  <data name="Entfernung" xml:space="preserve">
-    <value>Entfernung</value>
-  </data>
-  <data name="Ende" xml:space="preserve">
-    <value>Ende</value>
-  </data>
-  <data name="Einschlafzeit" xml:space="preserve">
-    <value>Einschlafzeit</value>
-  </data>
-  <data name="DatumUhrzeit" xml:space="preserve">
-    <value>Datum / Uhrzeit</value>
-  </data>
-  <data name="Datum" xml:space="preserve">
-    <value>Datum</value>
-  </data>
-  <data name="Berechtigung" xml:space="preserve">
-    <value>Berechtigung</value>
-  </data>
-  <data name="BackupBestätigen" xml:space="preserve">
-    <value>Backup auf dem Smartphone bestätigen</value>
-  </data>
-  <data name="Aufwachzeit" xml:space="preserve">
-    <value>Aufwachzeit</value>
-  </data>
-  <data name="AktionErforderlich" xml:space="preserve">
-    <value>Aktion erforderlich</value>
-  </data>
-  <data name="FehlerPhoneNotAvabile" xml:space="preserve">
-    <value>Keine Verbindung zum Smartphone möglich.</value>
-  </data>
-  <data name="FehlerWorkDirPhone" xml:space="preserve">
-    <value>Arbeitsverzeichnis auf Smartphone nicht gefunden. Zuletzt geleseme Daten werden angezeigt.</value>
-  </data>
-  <data name="RohdatenSensorwert" xml:space="preserve">
-    <value>Rohdaten Sensorwert</value>
-  </data>
-  <data name="RohdatenAktivität" xml:space="preserve">
-    <value>Rohdaten Aktivität</value>
-  </data>
-  <data name="GehenKalorien" xml:space="preserve">
-    <value>Gehen Kalorien</value>
-  </data>
-  <data name="GehenEntfernung" xml:space="preserve">
-    <value>Gehen Entfernung</value>
-  </data>
-  <data name="Beschreibung" xml:space="preserve">
-    <value>Beschreibung</value>
-  </data>
-  <data name="DbNotRead" xml:space="preserve">
-    <value>Daten konnten von Smartphone nicht gelesen werden</value>
-  </data>
-  <data name="Tagesuebersicht" xml:space="preserve">
-    <value>Tagesübersicht</value>
-  </data>
-  <data name="RawData" xml:space="preserve">
-    <value>Rohdaten</value>
-  </data>
+  <metadata name="groupBoxSleep.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="labelAvgSleep.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 95</value>
+  </metadata>
+  <metadata name="textBoxAvgSleep.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>279, 17</value>
+  </metadata>
+  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
 </root>

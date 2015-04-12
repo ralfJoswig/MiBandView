@@ -27,16 +27,16 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="WorkDirOnPhone" Type="System.String" Scope="User">
-      <Value Profile="(Default)">/storage/sdcard1/Backup/MiBand/</Value>
+      <Value Profile="(Default)">/storage/sdcard1/</Value>
     </Setting>
     <Setting Name="PhoneTimeOut" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5000</Value>
     </Setting>
     <Setting Name="Weight" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">93.2</Value>
+      <Value Profile="(Default)">85</Value>
     </Setting>
     <Setting Name="Hight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">183</Value>
+      <Value Profile="(Default)">180</Value>
     </Setting>
   </Settings>
 </SettingsFile>

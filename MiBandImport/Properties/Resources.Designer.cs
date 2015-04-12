@@ -133,6 +133,15 @@ namespace MiBandImport.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Data could not be read from Smartphone ähnelt.
+        /// </summary>
+        internal static string DbNotRead {
+            get {
+                return ResourceManager.GetString("DbNotRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sleep time ähnelt.
         /// </summary>
         internal static string Einschlafzeit {
@@ -322,6 +331,15 @@ namespace MiBandImport.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Raw-Data ähnelt.
+        /// </summary>
+        internal static string RawData {
+            get {
+                return ResourceManager.GetString("RawData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Raw activity ähnelt.
         /// </summary>
         internal static string RohdatenAktivität {
@@ -381,6 +399,15 @@ namespace MiBandImport.Properties {
         internal static string Taetigkeit {
             get {
                 return ResourceManager.GetString("Taetigkeit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Daily overview ähnelt.
+        /// </summary>
+        internal static string Tagesuebersicht {
+            get {
+                return ResourceManager.GetString("Tagesuebersicht", resourceCulture);
             }
         }
         

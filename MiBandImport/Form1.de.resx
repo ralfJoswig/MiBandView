@@ -139,7 +139,7 @@
     <value>letzte Daten anzeigen</value>
   </data>
   <data name="tabPageOriginTab.Text" xml:space="preserve">
-    <value>Tabelle</value>
+    <value>Tagesübersicht</value>
   </data>
   <data name="tabPageOriginGraphSteps.Text" xml:space="preserve">
     <value>Grafik Schritte</value>
@@ -158,5 +158,23 @@
   </data>
   <data name="tabPageDayDetail.Text" xml:space="preserve">
     <value>Tagesdetails</value>
+  </data>
+  <data name="buttonExport.Text" xml:space="preserve">
+    <value>Daten exportieren</value>
+  </data>
+  <data name="labelKg.Text" xml:space="preserve">
+    <value>kg</value>
+  </data>
+  <data name="labelCm.Text" xml:space="preserve">
+    <value>cm</value>
+  </data>
+  <data name="labelWeight.Text" xml:space="preserve">
+    <value>Gewicht</value>
+  </data>
+  <data name="labelHight.Text" xml:space="preserve">
+    <value>Größe</value>
+  </data>
+  <data name="tabPageStat.Text" xml:space="preserve">
+    <value>Statistik</value>
   </data>
 </root>
