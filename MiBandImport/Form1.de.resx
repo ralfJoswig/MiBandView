@@ -174,7 +174,4 @@
   <data name="labelHight.Text" xml:space="preserve">
     <value>Größe</value>
   </data>
-  <data name="tabPageStat.Text" xml:space="preserve">
-    <value>Statistik</value>
-  </data>
 </root>

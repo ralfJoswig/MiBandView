@@ -14,7 +14,9 @@
 using log4net;
 using MiBandImport.data;
 using MiBandImport.DataPanels;
+using MiBandImport.DBClass;
 using MiBandImport.EventArgsClasses;
+using MiBandImport.GoogleFit;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -39,6 +41,8 @@ namespace MiBandImport
 
         protected static readonly ILog log = LogManager.GetLogger(typeof(Program));
 
+        protected static DB db;
+
         private MiBand.MiBand miband;
 
         private PanelDetail1 panelDetail1;
@@ -46,11 +50,11 @@ namespace MiBandImport
         private PanelGeneralGraphSteps panelGeneralGraphSteps;
         private PanelGeneralGraphSleep panelGeneralGraphSleep;
         private PanelDayDetail panelDayDetail;
-        private PanelStatistics panelStatistics;
 
         private string pathDBshort = ".\\db\\";
         private string pathDB = Application.StartupPath + "\\db\\";
         private string pathLib = Application.StartupPath + "\\lib\\";
+        
 
         /// <summary>
         /// Konstruktor 
@@ -81,8 +85,16 @@ namespace MiBandImport
             // Schlafdauer zurückholen
             maskedTextBoxSleepDur.Text = Properties.Settings.Default.SleepDuration;
 
-            // Panles für die Daten erzeugen
-            initDataPanles();            
+            // Zugriff auf Datenbank gewähren
+            /*db = DB.getInstance();
+            if(!File.Exists(DB.getDbPath()) ||
+                new FileInfo(DB.getDbPath()).Length == 0)
+            {
+                db.createDB();
+            }*/
+
+            // Panels für die Daten erzeugen
+            initDataPanles();
         }
 
 
@@ -153,17 +165,6 @@ namespace MiBandImport
 
             // Daten anzeigen
             panelDayDetail.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
-
-            // Tab mit Statistiken
-            if (panelStatistics == null)
-            {
-                panelStatistics = new PanelStatistics();
-                tabPageStat.Controls.Add(panelStatistics);
-                panelStatistics.addListener();
-            }
-
-            // Daten anzeigen
-            //panelStatistics.setData(PanelDetail1.DataType.Global, miband, timeSpanSleep, dateTimePickerShowFrom.Value, dateTimePickerShowTo.Value);
         }
 
         /// <summary>
@@ -209,17 +210,27 @@ namespace MiBandImport
         /// </summary>
         private bool readDbFromPhone()
         {
+            bool readStatus;
+
             // Lesen mit Root-Rechten ?
             if (radioButtonNoRoot.Checked == false)
             {
                 // mit Root-Rechten lesen
-                return readAsRoot();
+                readStatus = readAsRoot();
             }
             else
             {
                 // ohne Root
-                return readNonRoot();
+                readStatus = readNonRoot();
             }
+
+            // wenn die neuen Daten gelesen werden, ein Backup anfertigen
+            if (readStatus)
+            {
+                MiBandDbBackup.doBackup(pathDB);
+            }
+
+            return readStatus;
         }
 
         /// <summary>
@@ -242,15 +253,15 @@ namespace MiBandImport
                     return false;
                 }
 
-                performCMD(pathLib + "tail -c +25 " + pathDB + "mi.ab > " + pathDB + "mi.zlb");
+                performCMD.execute(pathLib + "tail -c +25 " + pathDB + "mi.ab > " + pathDB + "mi.zlb");
 
                 // Datenbanken extrahieren
-                performCMD(pathLib + "deflate d " + pathDB + "mi.zlb " + pathDB + "mi.tar");
-                performCMD(pathLib + "tar xf " + pathDBshort + "mi.tar apps/com.xiaomi.hm.health/db/origin_db*");
-                performCMD(pathLib + "tar xf " + pathDBshort + "mi.tar apps/com.xiaomi.hm.health/db/user-db*");
+                performCMD.execute(pathLib + "deflate d " + pathDB + "mi.zlb " + pathDB + "mi.tar");
+                performCMD.execute(pathLib + "tar xf " + pathDBshort + "mi.tar apps/com.xiaomi.hm.health/db/origin_db*");
+                performCMD.execute(pathLib + "tar xf " + pathDBshort + "mi.tar apps/com.xiaomi.hm.health/db/user-db*");
 
                 // Datenbanken in Arbeitsverzeichnis kopieren
-                performCMD("copy /Y apps\\com.xiaomi.hm.health\\db\\* db\\.");
+                performCMD.execute("copy /Y apps\\com.xiaomi.hm.health\\db\\* db\\.");
 
                 // aufräumen
                 try
@@ -274,115 +285,6 @@ namespace MiBandImport
             else
             {
                 return false;
-            }
-        }
-
-        /// <summary>
-        /// Führt ein Shell-Kommando aus
-        /// </summary>
-        /// <param name="cmd"></param>
-        /// <param name="showError"></param>
-        /// <param name="showOutput"></param>
-        private bool performCMD(string cmd, bool showError = false, bool showOutput = false, int timeout = 999999)
-        {
-            log.Debug("Kommando wird ausgeführt: " + cmd);
-
-            // Prozess vorbereiten
-            ProcessStartInfo psi = new ProcessStartInfo();
-            psi.CreateNoWindow = true;
-            psi.UseShellExecute = false;
-
-            psi.FileName = "CMD.exe";
-
-            psi.Arguments = "/c " + cmd;
-
-            psi.ErrorDialog = true;
-            psi.WorkingDirectory = Application.StartupPath;
-            psi.WindowStyle = ProcessWindowStyle.Hidden;
-            psi.RedirectStandardOutput = true;
-            psi.RedirectStandardError = true;
-
-            // Prozess ausführen
-            using (Process process = Process.Start(psi))
-            {
-                try
-                {
-                    // auf Beenden des Kommandos warten
-                    log.Debug("Prozess wird gestartet, Timeout in ms " + timeout);
-                    process.WaitForExit(timeout);
-                    log.Debug("Prozess wurde beendet");
-
-                    if (!process.HasExited)
-                    {
-                        log.Error("Prozess wurde NICHT korrekt beendet");
-                        return false;
-                    }
-
-                    // Exit-Code ermitteln
-                    var exitCode = process.ExitCode;
-
-                    log.Debug("Ergebnis Kommando : " + exitCode);
-
-                    // wenn das Programm ohne Fehlercode beendet wurde
-                    if (exitCode == 0)
-                    {
-                        // Ausgabe des Programms holen
-                        var output = process.StandardOutput.ReadToEnd();
-
-                        // Wenn was ermittelt wurde und auch ausgegeben werden soll
-                        if (output.Length > 0)
-                        {
-                            log.Debug("Ausgabe Kommando : " + output);
-
-                            if (showOutput)
-                            {
-                                // Meldung ausgeben
-                                MessageBox.Show(output, 
-                                                Properties.Resources.ErgebnisAktion, 
-                                                MessageBoxButtons.OK,
-                                                MessageBoxIcon.Information);
-                                
-                            }
-                        }
-
-                        return true;
-                    }
-                    else
-                    {
-                        // Programm wurde mit Fehlercode beendet
-                        var error = process.StandardError.ReadToEnd();
-
-                        // Wenn was ermittelt wurde und auch ausgegeben werden soll
-                        if (error.Length > 0)
-                        {
-                            log.Error("Fehler Kommando : " + error);
-
-                            if (showError)
-                            {
-                                // Meldung ausgeben
-                                MessageBox.Show(error, 
-                                                Properties.Resources.FehlerMsg, 
-                                                MessageBoxButtons.OK, 
-                                                MessageBoxIcon.Error);
-                            }
-                        }
-
-                        return false;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // richtiger Fehler aufgetreten, ausgeben und ab ins Log
-                    MessageBox.Show(ex.Message,
-                                    Properties.Resources.FehlerMsg, 
-                                    MessageBoxButtons.OK, 
-                                    MessageBoxIcon.Error);
-
-                    log.Error(ex.Message);
-                    log.Error(ex.StackTrace);
-
-                    return false;
-                }
             }
         }
 
@@ -428,10 +330,10 @@ namespace MiBandImport
             adbCommand("shell \"su -c 'cp /data/data/com.xiaomi.hm.health/databases/user-db-journal " + workDir + "'\"", Properties.Settings.Default.PhoneTimeOut);
 
             // Daten vom Phone auf Rechner kopieren
-            adbCommand("pull " + workDir + "origin_db  " + pathDB + "origin_db", Properties.Settings.Default.PhoneTimeOut);
-            adbCommand("pull " + workDir + "origin_db-journal " + pathDB + "origin_db-journal", Properties.Settings.Default.PhoneTimeOut);
-            adbCommand("pull " + workDir + "user-db  " + pathDB + "user-db", Properties.Settings.Default.PhoneTimeOut);
-            adbCommand("pull " + workDir + "user-db-journal " + pathDB + "user-db-journal", Properties.Settings.Default.PhoneTimeOut);
+            adbCommand("pull " + workDir + "/origin_db  " + pathDB + "origin_db", Properties.Settings.Default.PhoneTimeOut);
+            adbCommand("pull " + workDir + "/origin_db-journal " + pathDB + "origin_db-journal", Properties.Settings.Default.PhoneTimeOut);
+            adbCommand("pull " + workDir + "/user-db  " + pathDB + "user-db", Properties.Settings.Default.PhoneTimeOut);
+            adbCommand("pull " + workDir + "/user-db-journal " + pathDB + "user-db-journal", Properties.Settings.Default.PhoneTimeOut);
 
             // alles anscheinend ohne Fehler verlaufen
             return true;
@@ -494,8 +396,9 @@ namespace MiBandImport
             // wenn nötig Panles für Daten initialisieren
             initDataPanles();
 
-            // Daten wurden gelesen, dann Drucktaste für Export aktivieren
+            // Daten wurden gelesen, dann Drucktaste für Export und Google Fit aktivieren
             buttonExport.Enabled = true;
+            buttonGoogle.Enabled = true;
         }
 
         /// <summary>
@@ -504,7 +407,7 @@ namespace MiBandImport
         /// <param name="arg"></param>
         private bool adbCommand(string arg, int timeout = 99999)
         {
-            return performCMD(pathLib + "adb " + arg, timeout: timeout);
+            return performCMD.execute(pathLib + "adb " + arg, timeout: timeout);
         }
 
         /// <summary>
@@ -548,6 +451,11 @@ namespace MiBandImport
 
             // Einstellungen speichern
             Properties.Settings.Default.Save();
+
+            /*foreach (var band in miband.userData)
+            {
+                db.saveDaySum(band);                
+            }*/
 
             log.Info("Anwendung wird beendet");
         }
@@ -647,6 +555,12 @@ namespace MiBandImport
         private void buttonExport_Click(object sender, EventArgs e)
         {
             new FormExport(miband).ShowDialog();
+        }
+
+        private void buttonGoogle_Click(object sender, EventArgs e)
+        {
+
+            //GoogleAuth auth = new GoogleAuth();
         }
     }
 }

@@ -58,7 +58,7 @@
             this.tabPageOriginGraphSleep = new System.Windows.Forms.TabPage();
             this.tabPageDayDetail = new System.Windows.Forms.TabPage();
             this.tabPageUserData = new System.Windows.Forms.TabPage();
-            this.tabPageStat = new System.Windows.Forms.TabPage();
+            this.buttonGoogle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -77,6 +77,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.buttonGoogle);
             this.splitContainer1.Panel1.Controls.Add(this.buttonExport);
             this.splitContainer1.Panel1.Controls.Add(this.labelKg);
             this.splitContainer1.Panel1.Controls.Add(this.labelCm);
@@ -222,7 +223,6 @@
             // 
             this.tabControlMain.Controls.Add(this.tabPageOrigin);
             this.tabControlMain.Controls.Add(this.tabPageUserData);
-            this.tabControlMain.Controls.Add(this.tabPageStat);
             resources.ApplyResources(this.tabControlMain, "tabControlMain");
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
@@ -274,11 +274,12 @@
             this.tabPageUserData.Name = "tabPageUserData";
             this.tabPageUserData.UseVisualStyleBackColor = true;
             // 
-            // tabPageStat
+            // buttonGoogle
             // 
-            resources.ApplyResources(this.tabPageStat, "tabPageStat");
-            this.tabPageStat.Name = "tabPageStat";
-            this.tabPageStat.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.buttonGoogle, "buttonGoogle");
+            this.buttonGoogle.Name = "buttonGoogle";
+            this.buttonGoogle.UseVisualStyleBackColor = true;
+            this.buttonGoogle.Click += new System.EventHandler(this.buttonGoogle_Click);
             // 
             // Form1
             // 
@@ -311,28 +312,28 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButtonRoot;
         private System.Windows.Forms.RadioButton radioButtonNoRoot;
-        private System.Windows.Forms.TabControl tabControlMain;
-        private System.Windows.Forms.TabPage tabPageOrigin;
-        private System.Windows.Forms.TabControl tabControlOriginal;
-        private System.Windows.Forms.TabPage tabPageOriginTab;
-        private System.Windows.Forms.TabPage tabPageOriginGraphSteps;
-        private System.Windows.Forms.TabPage tabPageUserData;
         private System.Windows.Forms.DateTimePicker dateTimePickerShowFrom;
         private System.Windows.Forms.Label labelShowTo;
         private System.Windows.Forms.Label labelShowFrom;
         private System.Windows.Forms.DateTimePicker dateTimePickerShowTo;
-        private System.Windows.Forms.TabPage tabPageOriginGraphSleep;
         private System.Windows.Forms.TextBox textBoxWorkDirPhone;
         private System.Windows.Forms.Label labelWorkDirPhone;
-        private System.Windows.Forms.TabPage tabPageDayDetail;
         private System.Windows.Forms.TextBox textBoxWeight;
         private System.Windows.Forms.TextBox textBoxHight;
         private System.Windows.Forms.Label labelWeight;
         private System.Windows.Forms.Label labelHight;
         private System.Windows.Forms.Label labelKg;
         private System.Windows.Forms.Label labelCm;
-        private System.Windows.Forms.TabPage tabPageStat;
         private System.Windows.Forms.Button buttonExport;
+        private System.Windows.Forms.TabControl tabControlMain;
+        private System.Windows.Forms.TabPage tabPageOrigin;
+        private System.Windows.Forms.TabControl tabControlOriginal;
+        private System.Windows.Forms.TabPage tabPageOriginTab;
+        private System.Windows.Forms.TabPage tabPageOriginGraphSteps;
+        private System.Windows.Forms.TabPage tabPageOriginGraphSleep;
+        private System.Windows.Forms.TabPage tabPageDayDetail;
+        private System.Windows.Forms.TabPage tabPageUserData;
+        private System.Windows.Forms.Button buttonGoogle;
     }
 }
 

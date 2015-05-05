@@ -20,6 +20,8 @@ using log4net.Repository.Hierarchy;
 using System;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -97,6 +99,21 @@ namespace MiBandImport
             }
 
             log.Info("LogLevel wurde gesetzt: " + LogManager.GetRepository().Threshold.ToString());
+        }
+
+        /// <summary>
+        /// Determines the GUID of the current assembly
+        /// </summary>
+        /// <returns>GUID as string</returns>
+        public static string getAssemblyGUID()
+        {
+            string id = "";
+            foreach (object attr in Assembly.GetExecutingAssembly().GetCustomAttributes(true))
+            {
+                if (attr is GuidAttribute)
+                    id = ((GuidAttribute)attr).Value;
+            }
+            return id;
         }
     }
 }

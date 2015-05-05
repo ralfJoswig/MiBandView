@@ -6,6 +6,10 @@
     </header>
     <body>
       <group id="Resx">
+        <trans-unit id="Resx/buttonGoogle.Text" translate="yes" xml:space="preserve">
+          <source>Google Fit</source>
+          <target state="new">Google Fit</target>
+        </trans-unit>
         <trans-unit id="Resx/buttonExport.Text" translate="yes" xml:space="preserve">
           <source>Export Data</source>
           <target state="signed-off">Daten exportieren</target>
@@ -81,10 +85,6 @@
         <trans-unit id="Resx/tabPageUserData.Text" translate="yes" xml:space="preserve">
 		  <source>Info</source>
 		  <target state="signed-off">Info</target></trans-unit>
-        <trans-unit id="Resx/tabPageStat.Text" translate="yes" xml:space="preserve">
-          <source>Statistics</source>
-          <target state="signed-off">Statistik</target>
-        </trans-unit>
         <trans-unit id="Resx/$this.Text" translate="no" xml:space="preserve">
 		  <source>MiBandView</source>
 		  <target state="signed-off">MiBandView</target></trans-unit>
