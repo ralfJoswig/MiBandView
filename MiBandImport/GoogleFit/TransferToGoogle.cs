@@ -23,6 +23,6 @@ namespace MiBandImport.GoogleFit
 {
     class TransferToGoogle
     {
-       
+       //DataSource ds = new DataSource().
     }
 }
