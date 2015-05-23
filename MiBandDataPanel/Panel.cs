@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace MiBandDataPanel
 {
-    public partial class MiBandPanel: Panel
+    public partial class MiBandPanel: Panel 
     {
         public enum DataType { Global, Detail }
 
