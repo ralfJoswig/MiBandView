@@ -46,7 +46,7 @@ namespace MiBandDataPanel
         {
             // Daten übernehmen
             type = _type;
-            data = _data;
+            data = _data;    
             sleepDuration = _sleepDuration;
             showFrom = _showFrom;
             showTo = _showTo;
