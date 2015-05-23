@@ -21,7 +21,7 @@ namespace MiBandDataPanel
         public enum DataType { Global, Detail }
 
         protected DataType type;
-        protected MiBand.MiBand data;
+        protected MiBand.MiBand data;    
         protected TimeSpan sleepDuration;
         protected DateTime showFrom;
         protected DateTime showTo;
